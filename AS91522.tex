@@ -1,7 +1,8 @@
 \documentclass[11pt, a4paper]{article}
 \usepackage[margin=1cm]{geometry}
+\parindent 0px % indent new lines by 0 pixels
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref, amsfonts,amssymb,amsmath,tikz,pgfplots}
+\usepackage{hyperref, amsfonts,amssymb,amsmath,tikz,pgfplots,float}
 \usetikzlibrary{positioning}
 
 \title{\small AS91522 - Physics 3.2\\ \huge Circular Motion of a Stunt Glider}
@@ -20,10 +21,13 @@
 		\item Lift ($\vec{F_L}$) perpendicular to direction of velocity, toward the center of the circular path.
 		\item Air Resistance ($\vec{F_R}$) (i.e. Friction, Drag) opposite to direction of velocity.
 	\end{enumerate}
+	Please note that vector arrow lengths are not perfectly proportionally accurate.
 	\begin{center}
 		\begin{tikzpicture}
 			\pgfmathsetmacro{\MaxVelocityLength}{2}
 			\pgfmathsetmacro{\MinVelocityLength}{1}
+			\pgfmathsetmacro{\MaxResistanceLength}{\MaxVelocityLength*0.5}
+			\pgfmathsetmacro{\MinResistanceLength}{\MinVelocityLength*0.5}
 			\pgfmathsetmacro{\GravityLength}{1}
 			\pgfmathsetmacro{\PathRadius}{5}
 			\pgfmathsetmacro{\GliderPointRadius}{0.1}
@@ -35,18 +39,23 @@
 			\filldraw[black] (TopPos) circle (\GliderPointRadius);
 			\draw[->] (TopPos) -- ++(-\MinVelocityLength,0) node[left] {$\vec{v}$};
 			\draw[->] (TopPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+			\draw[->] (TopPos) -- ++(0,-0.5) node[right] {$\vec{F_L}$};
+			\draw[->] (TopPos) -- ++(\MinResistanceLength,0) node[right] {$\vec{F_R}$};
 			
 			\filldraw[black] (BottomPos) circle (\GliderPointRadius);
 			\draw[->] (BottomPos) -- ++(\MaxVelocityLength,0) node[right] {$\vec{v}$};
 			\draw[->] (BottomPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
 			\draw[->] (BottomPos) -- ++(0,2) node[above] {$\vec{F_L}$};
+			\draw[->] (BottomPos) -- ++(-\MaxResistanceLength,0) node[left] {$\vec{F_R}$};
 		\end{tikzpicture}
 	\end{center}
-	For simplicity, air resistance will be ignored as its effects are negligible?\\
-	The force of gravity is always constant in both magnitude and direction regardless of the glider's velocity or position in the loop (top, bottom, and anywhere else).\\
-	Conversely, the force of lift varies in both direction and magnitude depending on these factors.\\
-	Its magnitude is greatest at the bottom of the circular path, because to maintain circular motion the centripetal force ($\vec{F_c}=\vec{F_L}+\vec{F_g}$) towards the center of the circular path must have a magnitude value greater than zero ($|\vec{F_c}|>0N$) (and also great enough to provide centripetal acceleration for circular path radius), meaning the lift force upwards must be greater than the gravity force downwards.\\
-	It's magnitude is least at the top of the circular path, because the force of gravity already provides 
+	The force of gravity is always constant in both magnitude and direction regardless of the glider's velocity or position in the loop (top, bottom, and anywhere else). This is because $|\vec{F_g}|=mg$ where mass ($m$) and the acceleration of gravity ($g$) are constants.\\
+	Conversely, the force of lift varies in both direction and magnitude as the glider performs the loop the loop.\\
+	Lift's magnitude ($|\vec{F_L}|$) is greatest at the bottom, $\because |\vec{F_L}|=\frac{1}{2}pv^2AC_L$, $\therefore |\vec{F_L}|\propto v^2$. Because velocity is greatest at bottom, lift force is as well. To maintain circular motion the centripetal force ($|\vec{F_c}|=|\vec{F_L}|-|\vec{F_g}|$) towards the center of the circular path must have a magnitude value great enough to provide necessary centripetal acceleration for the circular path radius, meaning the lift force upwards must at least be greater than the gravity force downwards ($|\vec{F_L}|>|\vec{F_g}|$ in order for $|\vec{F_c}|>0$).\\
+	vernier graph here.\\
+	Lift's magnitude ($|\vec{F_L}|$) is least at the top, because the direction of gravity force is toward the center of the circular path. This means ($|\vec{F_c}|=|\vec{F_L}|+|\vec{F_g}|$).\\
+	
+	During the loop the loop, as the glider ascends, its kinetic energy ($E_K$) is converted into gravitational potential energy ($E_p$). As the glider descends, its gravitational potential energy ($E_p$) is converted back into kinetic energy ($E_K$).
 	
 	\subsection{Merit}
 	\subsection{Excellence}
