@@ -1,6 +1,8 @@
 \documentclass[11pt, a4paper]{article}
 \usepackage[margin=1cm]{geometry}
-\usepackage{hyperref, amsfonts,amssymb,amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref, amsfonts,amssymb,amsmath,tikz,pgfplots}
+\usetikzlibrary{positioning}
 
 \title{\small AS91522 - Physics 3.2\\ \huge Circular Motion of a Stunt Glider}
 \author{Nathan Tasker}
@@ -18,10 +20,32 @@
 		\item Lift ($\vec{F_L}$) perpendicular to direction of velocity, toward the center of the circular path.
 		\item Air Resistance ($\vec{F_R}$) (i.e. Friction, Drag) opposite to direction of velocity.
 	\end{enumerate}
+	\begin{center}
+		\begin{tikzpicture}
+			\pgfmathsetmacro{\MaxVelocityLength}{2}
+			\pgfmathsetmacro{\MinVelocityLength}{1}
+			\pgfmathsetmacro{\GravityLength}{1}
+			\pgfmathsetmacro{\PathRadius}{5}
+			\pgfmathsetmacro{\GliderPointRadius}{0.1}
+			\coordinate(TopPos) at (0,\PathRadius);
+			\coordinate(BottomPos) at (0,-\PathRadius);
+			
+			\draw[dashed, gray] (0,0) circle (\PathRadius);
+			
+			\filldraw[black] (TopPos) circle (\GliderPointRadius);
+			\draw[->] (TopPos) -- ++(-\MinVelocityLength,0) node[left] {$\vec{v}$};
+			\draw[->] (TopPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+			
+			\filldraw[black] (BottomPos) circle (\GliderPointRadius);
+			\draw[->] (BottomPos) -- ++(\MaxVelocityLength,0) node[right] {$\vec{v}$};
+			\draw[->] (BottomPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+			\draw[->] (BottomPos) -- ++(0,2) node[above] {$\vec{F_L}$};
+		\end{tikzpicture}
+	\end{center}
 	For simplicity, air resistance will be ignored as its effects are negligible?\\
 	The force of gravity is always constant in both magnitude and direction regardless of the glider's velocity or position in the loop (top, bottom, and anywhere else).\\
 	Conversely, the force of lift varies in both direction and magnitude depending on these factors.\\
-	Its magnitude is greatest at the bottom of the circular path, because to maintain circular motion the centripital force ($\vec{F_c}=\vec{F_L}+\vec{F_g}$) needs to be greater than the force of gravity that is in the opposite direction.\\
+	Its magnitude is greatest at the bottom of the circular path, because to maintain circular motion the centripetal force ($\vec{F_c}=\vec{F_L}+\vec{F_g}$) towards the center of the circular path must have a magnitude value greater than zero ($|\vec{F_c}|>0N$) (and also great enough to provide centripetal acceleration for circular path radius), meaning the lift force upwards must be greater than the gravity force downwards.\\
 	It's magnitude is least at the top of the circular path, because the force of gravity already provides 
 	
 	\subsection{Merit}
