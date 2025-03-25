@@ -21,18 +21,25 @@
 	Conversely, the force of lift varies in both direction and magnitude as the glider performs the loop the loop.\\
 	Lift's magnitude ($|\vec{F_L}|$) is greatest at the bottom, $\because |\vec{F_L}|=\frac{1}{2}p|\vec{v}|^2AC_L$, $\therefore |\vec{F_L}|\propto v^2$. Because velocity is greatest at bottom, lift force is as well. To maintain circular motion the centripetal force ($|\vec{F_c}|=|\vec{F_L}|-|\vec{F_g}|$) towards the center of the circular path must have a magnitude value great enough to provide necessary centripetal acceleration for the circular path radius, meaning the lift force upwards must at least be greater than the gravity force downwards ($|\vec{F_L}|>|\vec{F_g}|$ in order for $|\vec{F_c}|>0$).\\
 	Lift's magnitude ($|\vec{F_L}|$) is least at the top, because the direction of gravity force is toward the center of the circular path. This means ($|\vec{F_c}|=|\vec{F_L}|+|\vec{F_g}|$).\\
-	\begin{center}
+	\begin{figure}[H]
+		\centering
 		\begin{tikzpicture}
+			\pgfmathsetmacro{\TextGap}{0.2};
 			\pgfmathsetmacro{\HalfWidth}{8};
 			\pgfmathsetmacro{\TopLineY}{3.05};
 			\pgfmathsetmacro{\BottomLineY}{-2.65};
-			%\coordinate(TopPos) at (0,\PathRadius);
-			%\coordinate(BottomPos) at (0,-\PathRadius);
-			\node[inner sep=0] at (0,0) {\includegraphics[width=0.8\textwidth]{Images/Loop the loop graph.png}};sdfsdfsdfsdfsfd
-			\draw[gray, dashed] (-\HalfWidth,\TopLineY) -- (\HalfWidth,\TopLineY);
-			\draw[gray, dashed] (-\HalfWidth,\BottomLineY) -- (\HalfWidth,\BottomLineY);
+			\coordinate(BottomPos1) at (-5.65,\TopLineY);
+			\coordinate(TopPos) at (-0.1,-2.58);
+			\coordinate(BottomPos2) at (5.6,2.9);
+			\node[inner sep=0] at (0,0) {\includegraphics[width=0.8\textwidth]{Images/Loop the loop graph.png}};
+			\draw[black, dashed] (-\HalfWidth,\TopLineY) -- (\HalfWidth,\TopLineY);
+			\draw[black, dashed] (-\HalfWidth,\BottomLineY) -- (\HalfWidth,\BottomLineY);
+			\filldraw[red!50!black] (BottomPos1) circle (.1) node[above=\TextGap, align=center] {Bottom of the vertical circle\\(15.82s, 5.89N)};
+			\filldraw[green!50!black] (TopPos) circle (.1) node[above=\TextGap, align=center] {Top of the vertical circle\\(16.30s, 1.13N)};
+			\filldraw[blue!50!black] (BottomPos2) circle (.1) node[above=\TextGap, align=center] {Bottom of the vertical circle\\(16.80s, 5.81N)};
 		\end{tikzpicture}
-	\end{center}
+		\caption{Graph of a complete vertical loop}
+	\end{figure}
 	At the bottom of the vertical circle, the tension force (emulating the lift force, $\vec{F_L}$) is greatest, which occurs at 15.82 seconds with 5.89N.\\
 	Once the force meter (emulating motion of glider) reaches the top of the vertical circle, the tension force is at its least, which - when smoothing the curve of data and reducing random variation/noise - occurs at\\
 	Check if sine model or quadratic helps - then return to this section.\\
@@ -52,7 +59,7 @@
 		\therefore |\vec{F_L}|&\propto |\vec{v}|^2
 	\end{align}
 	Equation (5) shows that velocity is a major factor in the magnitude of the lift force. Without adequate velocity, inadequate lift force is provided for the vertical loop to be successful. As kinetic energy is converted to gravitational potential energy during ascent, if the velocity drops below what is required for the circular path radius its motion will instead imitate that of a projectile.\\
-	Other factors include surface area contacting air ($A$), and the coefficient of lift ($C_L$, determined by shape and angle of attack).\\
+	Other factors proportional to velocity include surface area contacting air ($A$), and the coefficient of lift ($C_L$), determined by shape and angle of attack).\\
 	Fluid density ($p$) is constant.\\[\ParagraphSpacing]
 	During motion, 3 forces are acting on the stunt glider:
 	\begin{enumerate}
@@ -88,7 +95,12 @@
 			\draw[->] (BottomPos) -- ++(-\MaxResistanceLength,0) node[left] {$\vec{F_R}$};
 		\end{tikzpicture}
 	\end{center}
-	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{Images/Dip in vertical circle.png}
+		\caption{The dip section of verticle circular motion with a quadratic curve fit}
+	\end{figure}
+	Quadratic curve fit is applied to closely fit the lift force data in the section of the dip motion from 18.50s to 18.88s. It helps exclude random variation / noise in the data and provide consistent smoothness and symmetry. The line displayed in the center marks 18.68s, which is when the emulated glider reaches its lowest vertical height (i.e. lowest point in the dip), also aligning with the local peak in the emulated lift force at 6.29N.
 	\subsection{Excellence}
 	\section{Banked Corner}
 	\subsection{Achieved}
