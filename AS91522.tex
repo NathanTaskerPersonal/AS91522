@@ -17,7 +17,14 @@
 	\newpage
 	\section{Vertical Circle: Loop the loop including Dip and Arch}
 	\subsection{Achieved}
-	The force of gravity is always constant in both magnitude and direction regardless of the glider's velocity or position in the loop (top, bottom, and anywhere else). This is because $|\vec{F_g}|=mg$ where mass ($m$) and the acceleration of gravity ($g$) are constants.\\[\ParagraphSpacing]
+	During motion, 3 forces are acting on the stunt glider:
+	\begin{enumerate}
+		\item Gravity ($\vec{F_g}$) (i.e. Weight) always vertically downwards (i.e. toward center of Earth).
+		\item Lift ($\vec{F_L}$) perpendicular to direction of velocity, toward the center of the circular path.
+		\item Air Resistance ($\vec{F_R}$) (i.e. Friction, Drag) opposite to direction of velocity.
+	\end{enumerate}
+	\vspace{\ParagraphSpacing}
+	The force of gravity is always constant in both magnitude and direction (vertically downwards) regardless of the glider's velocity or position in the loop (top, bottom, and anywhere else). This is because $|\vec{F_g}|=mg$ where mass ($m$) and the acceleration of gravity ($g$) are constants.\\[\ParagraphSpacing]
 	Conversely, the force of lift varies in both direction and magnitude as the glider performs the loop the loop.\\
 	Lift's magnitude ($|\vec{F_L}|$) is greatest at the bottom, $\because |\vec{F_L}|=\frac{1}{2}p|\vec{v}|^2AC_L$, $\therefore |\vec{F_L}|\propto v^2$. Because velocity is greatest at bottom, lift force is as well. To maintain circular motion the centripetal force ($|\vec{F_c}|=|\vec{F_L}|-|\vec{F_g}|$) towards the center of the circular path must have a magnitude value great enough to provide necessary centripetal acceleration for the circular path radius, meaning the lift force upwards must at least be greater than the gravity force downwards ($|\vec{F_L}|>|\vec{F_g}|$ in order for $|\vec{F_c}|>0$).\\
 	Lift's magnitude ($|\vec{F_L}|$) is least at the top, because the direction of gravity force is toward the center of the circular path. This means ($|\vec{F_c}|=|\vec{F_L}|+|\vec{F_g}|$).\\
@@ -85,7 +92,7 @@
 			\filldraw[black] (TopPos) circle (\GliderPointRadius);
 			\draw[->] (TopPos) -- ++(-\MinVelocityLength,0) node[left] {$\vec{v}$};
 			\draw[->] (TopPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
-			\draw[->] (TopPos) -- ++(0,-0.5) node[right] {$\vec{F_L}$};
+			\draw[->] (TopPos) -- ++(0,-0.5) node[left] {$\vec{F_L}$};
 			\draw[->] (TopPos) -- ++(\MinResistanceLength,0) node[right] {$\vec{F_R}$};
 			
 			\filldraw[black] (BottomPos) circle (\GliderPointRadius);
@@ -98,10 +105,101 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\textwidth]{Images/Dip in vertical circle.png}
-		\caption{The dip section of verticle circular motion with a quadratic curve fit}
+		\caption{The dip section of vertical circular motion with a quadratic curve fit}
 	\end{figure}
-	Quadratic curve fit is applied to closely fit the lift force data in the section of the dip motion from 18.50s to 18.88s. It helps exclude random variation / noise in the data and provide consistent smoothness and symmetry. The line displayed in the center marks 18.68s, which is when the emulated glider reaches its lowest vertical height (i.e. lowest point in the dip), also aligning with the local peak in the emulated lift force at 6.29N.
+	Quadratic curve fit is applied to closely fit the lift force data in the section of the dip motion from 18.50s to 18.88s. It helps exclude random variation / noise in the data and provide consistent smoothness and symmetry. The line displayed in the center marks 18.68s, which is when the emulated glider reaches its lowest vertical height (i.e. lowest point in the dip), also aligning with the local peak in the emulated lift force at 6.29N. The reason for the greatest lift force being required at the bottom of the loop the loop is due to its direction oppositely opposing gravity, requiring the greatest magnitude to provide sufficient centripetal force for the vertical loop's radius. The velocity is also greatest here as it has the greatest $E_K:E_P$ ratio (i.e. $\frac{E_K}{E_P}$ is at its greatest in the time series) (as previously explained) which is a major factor in causing that required greatest lift force (as previously explained in Eq2,3,5 $\because E_K\propto|\vec{v}|^2\propto |\vec{F_L}|$).
 	\subsection{Excellence}
+	\begin{center}
+		\begin{tikzpicture}
+			\pgfmathsetmacro{\SqrtTwo}{1.414213562}
+			\pgfmathsetmacro{\ARVel}{0.3}
+			\pgfmathsetmacro{\VelA}{2}
+			\pgfmathsetmacro{\VelB}{1.75}
+			\pgfmathsetmacro{\VelC}{1.5}
+			\pgfmathsetmacro{\VelD}{1.25}
+			\pgfmathsetmacro{\VelE}{1}
+			\pgfmathsetmacro{\LA}{2.1}
+			\pgfmathsetmacro{\LB}{1.7}
+			\pgfmathsetmacro{\LC}{1.3}
+			\pgfmathsetmacro{\LD}{0.9}
+			\pgfmathsetmacro{\LE}{0.5}
+			\pgfmathsetmacro{\GravityLength}{1}
+			\pgfmathsetmacro{\PathRadius}{9}
+			\pgfmathsetmacro{\DiagCoord}{\PathRadius/\SqrtTwo}
+			\pgfmathsetmacro{\GliderPointRadius}{0.1}
+			\coordinate(TopPos) at (0,\PathRadius);
+			\coordinate(RightPos) at (\PathRadius, 0);
+			\coordinate(LeftPos) at (-\PathRadius, 0);
+			\coordinate(BottomPos) at (0,-\PathRadius);
+			\coordinate(URPos) at (\DiagCoord, \DiagCoord);
+			\coordinate(LRPos) at (\DiagCoord, -\DiagCoord);
+			\coordinate(ULPos) at (-\DiagCoord, \DiagCoord);
+			\coordinate(LLPos) at (-\DiagCoord, -\DiagCoord);
+			
+			\draw[dashed, gray] (0,0) circle (\PathRadius);
+			
+			% TOP
+			\filldraw[black] (TopPos) circle (\GliderPointRadius);
+			\draw[->] (TopPos) -- ++(-\VelE,0) node[left] {$\vec{v}$};
+			\draw[->] (TopPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+			\draw[->] (TopPos) -- ++(0,-\LE) node[left] {$\vec{F_L}$};
+			\draw[->] (TopPos) -- ++(\VelE*\ARVel,0) node[right] {$\vec{F_R}$};
+			
+			% BOTTOM
+			\filldraw[black] (BottomPos) circle (\GliderPointRadius);
+			\draw[->] (BottomPos) -- ++(\VelA,0) node[right] {$\vec{v}$};
+			\draw[->] (BottomPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+			\draw[->] (BottomPos) -- ++(0,2) node[above] {$\vec{F_L}$};
+			\draw[->] (BottomPos) -- ++(-\VelA*\ARVel,0) node[left] {$\vec{F_R}$};
+			
+			% RIGHT
+			\filldraw[black] (RightPos) circle (\GliderPointRadius);
+			\draw[->] (RightPos) -- ++(0, \VelC) node[above] {$\vec{v}$};
+			\draw[->] (RightPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+			\draw[->] (RightPos) -- ++(-\LC,0) node[left] {$\vec{F_L}$};
+			\draw[->] (RightPos) -- ++(0,-\VelC*\ARVel) node[right] {$\vec{F_R}$};
+			
+			% LEFT
+			\filldraw[black] (LeftPos) circle (\GliderPointRadius);
+			\draw[->] (LeftPos) -- ++(0, -\VelC) node[below] {$\vec{v}$};
+			\draw[->] (LeftPos) -- ++(0,-\GravityLength) node[right] {$\vec{F_g}$};
+			\draw[->] (LeftPos) -- ++(\LC,0) node[right] {$\vec{F_L}$};
+			\draw[->] (LeftPos) -- ++(0,\VelC*\ARVel) node[above] {$\vec{F_R}$};
+			
+			% LOWER RIGHT
+			\filldraw[black] (LRPos) circle (\GliderPointRadius);
+			\draw[->] (LRPos) -- ++(\VelB/\SqrtTwo, \VelB/\SqrtTwo) node[above right] {$\vec{v}$};
+			\draw[->] (LRPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+			\draw[->] (LRPos) -- ++(-\LB/\SqrtTwo,\LB/\SqrtTwo) node[above left] {$\vec{F_L}$};
+			\draw[->] (LRPos) -- ++(-\VelB/\SqrtTwo*\ARVel,-\VelB/\SqrtTwo*\ARVel) node[below left] {$\vec{F_R}$};
+			
+			% LOWER LEFT
+			\filldraw[black] (LLPos) circle (\GliderPointRadius);
+			\draw[->] (LLPos) -- ++(\VelB/\SqrtTwo, -\VelB/\SqrtTwo) node[below right] {$\vec{v}$};
+			\draw[->] (LLPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+			\draw[->] (LLPos) -- ++(\LB/\SqrtTwo,\LB/\SqrtTwo) node[above right] {$\vec{F_L}$};
+			\draw[->] (LLPos) -- ++(-\VelB/\SqrtTwo*\ARVel,\VelB/\SqrtTwo*\ARVel) node[above left] {$\vec{F_R}$};
+			
+			% UPPER RIGHT
+			\filldraw[black] (URPos) circle (\GliderPointRadius);
+			\draw[->] (URPos) -- ++(-\VelD/\SqrtTwo, \VelD/\SqrtTwo) node[above left] {$\vec{v}$};
+			\draw[->] (URPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+			\draw[->] (URPos) -- ++(-\LD/\SqrtTwo,-\LD/\SqrtTwo) node[below left] {$\vec{F_L}$};
+			\draw[->] (URPos) -- ++(\VelD/\SqrtTwo*\ARVel,-\VelD/\SqrtTwo*\ARVel) node[below right] {$\vec{F_R}$};
+			
+			% UPPER LEFT
+			\filldraw[black] (ULPos) circle (\GliderPointRadius);
+			\draw[->] (ULPos) -- ++(-\VelD/\SqrtTwo, -\VelD/\SqrtTwo) node[below left] {$\vec{v}$};
+			\draw[->] (ULPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+			\draw[->] (ULPos) -- ++(\LD/\SqrtTwo,-\LD/\SqrtTwo) node[below right] {$\vec{F_L}$};
+			\draw[->] (ULPos) -- ++(\VelD/\SqrtTwo*\ARVel,\VelD/\SqrtTwo*\ARVel) node[above right] {$\vec{F_R}$};
+			
+			% INFO
+			\pgfmathsetmacro{\InfoSpacing}{15}
+			\node at (0,0) [align=center] {$\vec{F_g}$ Gravity\\[\InfoSpacing]$\vec{F_L}$ Lift\\[\InfoSpacing]$\vec{F_R}$ Air Resistance\\[\InfoSpacing]$\vec{v}$ Velocity};
+		\end{tikzpicture}
+	\end{center}
+	% continue
 	\section{Banked Corner}
 	\subsection{Achieved}
 	\subsection{Merit}
@@ -111,7 +209,7 @@
 	Access to all prior versions of this document during process of creation is publicly available at:\\
 	\url{https://github.com/NathanTaskerPersonal/AS91522}
 	\subsection{Graphical Analysis Files}
-	Access to all graphical analysis files are publically available at:\\
+	Access to all graphical analysis files are publicly available at:\\
 	\href{https://middletonschoolnz-my.sharepoint.com/:f:/g/personal/taskern_middleton_school_nz/EhEmw21C2L9Fn9BYUy2ccwMBn6xCUF93vtfvtT_5_rkxbA?e=Tp02lP}{middletonschoolnz-my.sharepoint.com/...}
 	\subsection{\LaTeX}
 	This document has been entirely written in \LaTeX; a markup language for mathematical equations and diagrams. I'm more than happy to provide plain text for the entire document for convenience in AI detection.
