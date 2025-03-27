@@ -259,15 +259,21 @@
 			&
 			Lift and gravity force vectors add. Gravity increases magnitude of centripetal force as it aligns in direction.\\
 			\hline
+			On the graph from our force meter model, this position has the greatest tension force, which is used to emulate the lift force of the glider. As previously explained, this is what we should expect as kinetic energy, velocity, and consequently the lift force of glider should be greatest, which is crucial for it to counter gravity and provide sufficient magnitude.
+			Although the tension force doesn't perfectly act as a lift force in that its force isnt proportional to velocity in the same way it instead almost instantaneously provides adequate force to decelerate outwards velocity to zero and if it remains on the circumference of the path with force applied against it, tension provides greater than or equal to to counter it.
+			&
+			new cell\\
+			\hline
 		\end{tabularx}
 	\end{table}
 	
 	\begin{table}[H]
-		\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+		\renewcommand{\arraystretch}{1.5}
+		\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|||>{\raggedright\arraybackslash}X|}
 			\hline
 			Right of loop ($\vec{v}$ direction is vertically upwards)
 			&
-			Top Right of loop ($\vec{v}$ direction is left at $45^\circ$ above horizontal)\\
+			Bottom Right of loop ($\vec{v}$ direction is right at $45^\circ$ above horizontal)\\
 			\hline
 			\begin{center}
 				\begin{tikzpicture}
@@ -288,19 +294,23 @@
 			&
 			\begin{center}
 				\begin{tikzpicture}
-					\pgfmathsetmacro{\LE}{0.5}
-					\pgfmathsetmacro{\VelE}{1}
+					\pgfmathsetmacro{\SqrtTwo}{1.414213562}
+					\pgfmathsetmacro{\VelB}{1.75}
+					\pgfmathsetmacro{\LB}{1.7}
 					\pgfmathsetmacro{\GravityLength}{1}
+					\pgfmathsetmacro{\GravityComponent}{\GravityLength/\SqrtTwo}
 					\pgfmathsetmacro{\GliderPointRadius}{0.1}
 					\pgfmathsetmacro{\ARVel}{0.3}
-					\pgfmathsetmacro{\FC}{\LE+\GravityLength}
-					% TOP
-					\draw[->, red!50!white, line width=1mm] (0,0) -- ++(0,-\FC) node[below,yshift=-1mm] {$\vec{F_c}$};
+					\pgfmathsetmacro{\FC}{\LB-\GravityComponent}
+					% LOWER RIGHT
+					\draw[->, red!50!white, line width=1mm] (0,0) -- ++(-\FC/\SqrtTwo,\FC/\SqrtTwo) node[above,xshift=1mm] {$\vec{F_c}$};
+					\draw[->] (0,0) -- ++(\VelB/\SqrtTwo, \VelB/\SqrtTwo) node[above right] {$\vec{v}$};
+					\draw[->] (0,0) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+					\draw[->] (0,0) -- ++(-\LB/\SqrtTwo,\LB/\SqrtTwo) node[above left] {$\vec{F_L}$};
+					\draw[->, gray] (0,0) -- ++(-\GravityComponent/\SqrtTwo,-\GravityComponent/\SqrtTwo) node[below left] {$\vec{F_{g_{C1}}}$};
+					\draw[->, gray] (0,0) -- ++(\GravityComponent/\SqrtTwo,-\GravityComponent/\SqrtTwo) node[below right] {$\vec{F_{g_{C2}}}$};
+					\draw[->] (0,0) -- ++(-\VelB/\SqrtTwo*\ARVel,-\VelB/\SqrtTwo*\ARVel) node[above left] {$\vec{F_R}$};
 					\filldraw[black] (0,0) circle (\GliderPointRadius);
-					\draw[->] (0,0) -- ++(-\VelE,0) node[left] {$\vec{v}$};
-					\draw[->] (0,0) -- ++(0,-\GravityLength) node[right] {$\vec{F_g}$};
-					\draw[->] (0,0) -- ++(0,-\LE) node[left] {$\vec{F_L}$};
-					\draw[->] (0,0) -- ++(\VelE*\ARVel,0) node[right] {$\vec{F_R}$};
 				\end{tikzpicture}
 			\end{center}\\
 			\hline
@@ -310,13 +320,13 @@
 			\end{array}$
 			&
 			$\begin{array}{rcl}
-				\vec{F_c}&=&\vec{F_L}+\vec{F_g}\\
-				|\vec{F_c}|&=&|\vec{F_L}|+|\vec{F_g}|
+				\vec{F_c}&=&\vec{F_L}+\vec{F_{g_{C2}}}\\
+				|\vec{F_c}|&=&|\vec{F_L}|-|\vec{F_{g_{C2}}}|
 			\end{array}$\\
 			\hline
 			Centripetal force can only be provided by lift force. All other forces are vertical (have no horizontal component that can contribute to centripetal force).
 			&
-			Lift and gravity force vectors add. Gravity increases magnitude of centripetal force as it aligns in direction.\\
+			Lift and only a component of gravity ($\vec{F_{g_{C2}}}$) add to provide the centripetal force. That component of gravity contributes in decreasing the magnitude of centripetal force as it opposes in direction.\\
 			\hline
 		\end{tabularx}
 	\end{table}
