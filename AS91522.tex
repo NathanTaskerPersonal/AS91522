@@ -1,8 +1,10 @@
 \documentclass[11pt, a4paper]{article}
+\usepackage[none]{hyphenat}
+\sloppy
 \usepackage[left=1cm, right=1cm, top=1cm, bottom=2cm]{geometry}
 \parindent 0px % indent new lines by 0 pixels
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref, amsfonts,amssymb,amsmath,tikz,pgfplots,float,graphicx}
+\usepackage{hyperref, amsfonts,amssymb,amsmath,tikz,pgfplots,float,graphicx,tabularx,array}
 \usetikzlibrary{positioning}
 
 \def\ParagraphSpacing{30pt}
@@ -149,7 +151,7 @@
 			\filldraw[black] (BottomPos) circle (\GliderPointRadius);
 			\draw[->] (BottomPos) -- ++(\VelA,0) node[right] {$\vec{v}$};
 			\draw[->] (BottomPos) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
-			\draw[->] (BottomPos) -- ++(0,2) node[above] {$\vec{F_L}$};
+			\draw[->] (BottomPos) -- ++(0,\LA) node[above] {$\vec{F_L}$};
 			\draw[->] (BottomPos) -- ++(-\VelA*\ARVel,0) node[left] {$\vec{F_R}$};
 			
 			% RIGHT
@@ -199,7 +201,126 @@
 			\node at (0,0) [align=center] {$\vec{F_g}$ Gravity\\[\InfoSpacing]$\vec{F_L}$ Lift\\[\InfoSpacing]$\vec{F_R}$ Air Resistance\\[\InfoSpacing]$\vec{v}$ Velocity};
 		\end{tikzpicture}
 	\end{center}
-	% continue
+	\begin{table}[H]
+		\renewcommand{\arraystretch}{1.5}
+		\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|||>{\raggedright\arraybackslash}X|}
+			\hline
+			Bottom of loop ($\vec{v}$ direction is horizontally right)
+			&
+			Top of loop ($\vec{v}$ direction is horizontally left)\\
+			\hline
+			\begin{center}
+				\begin{tikzpicture}
+					\pgfmathsetmacro{\LA}{2.1}
+					\pgfmathsetmacro{\VelA}{2}
+					\pgfmathsetmacro{\GravityLength}{1}
+					\pgfmathsetmacro{\GliderPointRadius}{0.1}
+					\pgfmathsetmacro{\ARVel}{0.3}
+					\pgfmathsetmacro{\FC}{\LA-\GravityLength}
+					% BOTTOM
+					\draw[->, red!50!white, line width=1mm] (0,0) -- ++(0,\FC) node[right,xshift=1mm] {$\vec{F_c}$};
+					\draw[->] (0,0) -- ++(\VelA,0) node[right] {$\vec{v}$};
+					\draw[->] (0,0) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+					\draw[->] (0,0) -- ++(0,\LA) node[above] {$\vec{F_L}$};
+					\draw[->] (0,0) -- ++(-\VelA*\ARVel,0) node[left] {$\vec{F_R}$};
+					\filldraw[black] (0,0) circle (\GliderPointRadius);
+				\end{tikzpicture}
+			\end{center}
+			&
+			\begin{center}
+				\begin{tikzpicture}
+					\pgfmathsetmacro{\LE}{0.5}
+					\pgfmathsetmacro{\VelE}{1}
+					\pgfmathsetmacro{\GravityLength}{1}
+					\pgfmathsetmacro{\GliderPointRadius}{0.1}
+					\pgfmathsetmacro{\ARVel}{0.3}
+					\pgfmathsetmacro{\FC}{\LE+\GravityLength}
+					% TOP
+					\draw[->, red!50!white, line width=1mm] (0,0) -- ++(0,-\FC) node[below,yshift=-1mm] {$\vec{F_c}$};
+					\filldraw[black] (0,0) circle (\GliderPointRadius);
+					\draw[->] (0,0) -- ++(-\VelE,0) node[left] {$\vec{v}$};
+					\draw[->] (0,0) -- ++(0,-\GravityLength) node[right] {$\vec{F_g}$};
+					\draw[->] (0,0) -- ++(0,-\LE) node[left] {$\vec{F_L}$};
+					\draw[->] (0,0) -- ++(\VelE*\ARVel,0) node[right] {$\vec{F_R}$};
+				\end{tikzpicture}
+			\end{center}\\
+			\hline
+			$\begin{array}{rcl}
+				\vec{F_c}&=&\vec{F_L}+\vec{F_g}\\
+				|\vec{F_c}|&=&|\vec{F_L}|-|\vec{F_g}|
+			\end{array}$
+			&
+			$\begin{array}{rcl}
+				\vec{F_c}&=&\vec{F_L}+\vec{F_g}\\
+				|\vec{F_c}|&=&|\vec{F_L}|+|\vec{F_g}|
+			\end{array}$\\
+			\hline
+			Lift and gravity force vectors add. Gravity reduces magnitude of centripetal force as it opposes in direction.
+			&
+			Lift and gravity force vectors add. Gravity increases magnitude of centripetal force as it aligns in direction.\\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
+	\begin{table}[H]
+		\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+			\hline
+			Right of loop ($\vec{v}$ direction is vertically upwards)
+			&
+			Top Right of loop ($\vec{v}$ direction is left at $45^\circ$ above horizontal)\\
+			\hline
+			\begin{center}
+				\begin{tikzpicture}
+					\pgfmathsetmacro{\LC}{1.3}
+					\pgfmathsetmacro{\VelC}{1.5}
+					\pgfmathsetmacro{\GravityLength}{1}
+					\pgfmathsetmacro{\GliderPointRadius}{0.1}
+					\pgfmathsetmacro{\ARVel}{0.3}
+					% RIGHT
+					\draw[->, red!50!white, line width=1mm] (0,0) -- ++(-\LC,0) node[left,xshift=-1mm] {$\vec{F_c}$};
+					\filldraw[black] (0,0) circle (\GliderPointRadius);
+					\draw[->] (0,0) -- ++(0, \VelC) node[above] {$\vec{v}$};
+					\draw[->] (0,0) -- ++(0,-\GravityLength) node[below] {$\vec{F_g}$};
+					\draw[->] (0,0) -- ++(-\LC,0) node[above,xshift=1mm,yshift=1mm] {$\vec{F_L}$};
+					\draw[->] (0,0) -- ++(0,-\VelC*\ARVel) node[right] {$\vec{F_R}$};
+				\end{tikzpicture}
+			\end{center}
+			&
+			\begin{center}
+				\begin{tikzpicture}
+					\pgfmathsetmacro{\LE}{0.5}
+					\pgfmathsetmacro{\VelE}{1}
+					\pgfmathsetmacro{\GravityLength}{1}
+					\pgfmathsetmacro{\GliderPointRadius}{0.1}
+					\pgfmathsetmacro{\ARVel}{0.3}
+					\pgfmathsetmacro{\FC}{\LE+\GravityLength}
+					% TOP
+					\draw[->, red!50!white, line width=1mm] (0,0) -- ++(0,-\FC) node[below,yshift=-1mm] {$\vec{F_c}$};
+					\filldraw[black] (0,0) circle (\GliderPointRadius);
+					\draw[->] (0,0) -- ++(-\VelE,0) node[left] {$\vec{v}$};
+					\draw[->] (0,0) -- ++(0,-\GravityLength) node[right] {$\vec{F_g}$};
+					\draw[->] (0,0) -- ++(0,-\LE) node[left] {$\vec{F_L}$};
+					\draw[->] (0,0) -- ++(\VelE*\ARVel,0) node[right] {$\vec{F_R}$};
+				\end{tikzpicture}
+			\end{center}\\
+			\hline
+			$\begin{array}{rcl}
+				\vec{F_c}&=&\vec{F_L}\\
+				|\vec{F_c}|&=&|\vec{F_L}|
+			\end{array}$
+			&
+			$\begin{array}{rcl}
+				\vec{F_c}&=&\vec{F_L}+\vec{F_g}\\
+				|\vec{F_c}|&=&|\vec{F_L}|+|\vec{F_g}|
+			\end{array}$\\
+			\hline
+			Centripetal force can only be provided by lift force. All other forces are vertical (have no horizontal component that can contribute to centripetal force).
+			&
+			Lift and gravity force vectors add. Gravity increases magnitude of centripetal force as it aligns in direction.\\
+			\hline
+		\end{tabularx}
+	\end{table}
+	
 	\section{Banked Corner}
 	\subsection{Achieved}
 	\subsection{Merit}
