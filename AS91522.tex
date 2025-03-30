@@ -245,24 +245,30 @@
 				\end{tikzpicture}
 			\end{center}\\
 			\hline
-			$\begin{array}{rcl}
-				\vec{F_c}&=&\vec{F_L}+\vec{F_g}\\
-				|\vec{F_c}|&=&|\vec{F_L}|-|\vec{F_g}|
-			\end{array}$
+			\parbox{0.45\textwidth}{
+				\begin{align}
+					\vec{F_c} &= \vec{F_L} + \vec{F_g} \\
+					|\vec{F_c}| &= |\vec{F_L}| - |\vec{F_g}|
+				\end{align}
+			}
 			&
-			$\begin{array}{rcl}
-				\vec{F_c}&=&\vec{F_L}+\vec{F_g}\\
-				|\vec{F_c}|&=&|\vec{F_L}|+|\vec{F_g}|
-			\end{array}$\\
+			\parbox{0.45\textwidth}{
+				\begin{align}
+					\vec{F_c} &= \vec{F_L} + \vec{F_g} \\
+					|\vec{F_c}| &= |\vec{F_L}| + |\vec{F_g}|
+				\end{align}
+			}\\
 			\hline
 			Lift and gravity force vectors add. Gravity reduces magnitude of centripetal force as it opposes in direction.
 			&
 			Lift and gravity force vectors add. Gravity increases magnitude of centripetal force as it aligns in direction.\\
 			\hline
 			On the graph from our force meter model, this position has the greatest tension force, which is used to emulate the lift force of the glider. As previously explained, this is what we should expect as kinetic energy, velocity, and consequently the lift force of glider should be greatest, which is crucial for it to counter gravity and provide sufficient magnitude.
-			Although the tension force doesn't perfectly act as a lift force in that its force isnt proportional to velocity in the same way it instead almost instantaneously provides adequate force to decelerate outwards velocity to zero and if it remains on the circumference of the path with force applied against it, tension provides greater than or equal to to counter it.
+			
+			\vspace{\baselineskip}
+			Although the tension force doesn't perfectly act as a lift force in that its force isn't proportional to velocity in the same way it instead almost instantaneously provides adequate force to decelerate outwards velocity to zero and if it remains on the circumference of the path with force applied against it, tension provides greater than or equal to to counter it.
 			&
-			new cell\\
+			On the graph from our force meter mode, this position has the least tension force which is used to emualte the lift force of the glider. As explained, this is what we should expect as kinetic energy, velocity and consequently the lift force of the glider should be least - instead the force of gravity typically contributes the majority towards the centripetal force, with the downwards lift force contributing a minority to its magnitude.\\
 			\hline
 		\end{tabularx}
 	\end{table}
@@ -314,22 +320,60 @@
 				\end{tikzpicture}
 			\end{center}\\
 			\hline
-			$\begin{array}{rcl}
-				\vec{F_c}&=&\vec{F_L}\\
-				|\vec{F_c}|&=&|\vec{F_L}|
-			\end{array}$
+			\parbox{0.45\textwidth}{
+				\begin{align}
+					\vec{F_c} &= \vec{F_L} \\
+					|\vec{F_c}| &= |\vec{F_L}|
+				\end{align}
+			}
 			&
-			$\begin{array}{rcl}
-				\vec{F_c}&=&\vec{F_L}+\vec{F_{g_{C2}}}\\
-				|\vec{F_c}|&=&|\vec{F_L}|-|\vec{F_{g_{C2}}}|
-			\end{array}$\\
+			\parbox{0.45\textwidth}{
+				\vspace{10pt}
+				$\vec{F_{g_{C1}}}$ is left at $45^\circ$ below horizontal \\
+				$\vec{F_{g_{C2}}}$ is right at $45^\circ$ below horizontal
+				\begin{align}
+					|\vec{F_{g_{C2}}}| &= |\vec{F_{g_{C1}}}| \\
+					&= |\vec{F_g}| \times \sin (45^\circ) \\
+					&= |\vec{F_g}| \times \frac{\sqrt{2}}{2} \\
+					&= \frac{|\vec{F_g}|\sqrt{2}}{2} \\[20pt]
+					\vec{F_c} &= \vec{F_L} + \vec{F_{g_{C2}}} \\
+					|\vec{F_c}| &= |\vec{F_L}| - |\vec{F_{g_{C2}}}| \\
+					&= |\vec{F_L}| - \frac{|\vec{F_g}|\sqrt{2}}{2}
+				\end{align}
+			}\\
 			\hline
 			Centripetal force can only be provided by lift force. All other forces are vertical (have no horizontal component that can contribute to centripetal force).
 			&
 			Lift and only a component of gravity ($\vec{F_{g_{C2}}}$) add to provide the centripetal force. That component of gravity contributes in decreasing the magnitude of centripetal force as it opposes in direction.\\
 			\hline
+			On the graph, We can expect this position of the loop to have a tension force exactly halfway in between the peak and trough. The difference in velocity between top and bottom will determine how much the tension force varies throughout the loop.
+			
+			\vspace{\baselineskip}
+			If proportionally significant, we can expect proportionally significant change in tension/lift, else if very little proportional change we can expect very little proportional difference to the lift (and centripetal since they're the same, solely provided by lift) force.
+			
+			\vspace{\baselineskip}
+			By this point it has gained half the gravitation potential energy that it will in total, and hence lost exactly half of the kinetic energy it will lose in total. So velocity is exactly half that change and consequently lift force is exactly half.
+			
+			\vspace{\baselineskip}
+			REWORD AND PROVIDE EQUATION PROOF?
+			&
+			On the graph, we can expect this position of the loop to have a tension force exactly a quarter of the range above the minimum of the range. 
+			\parbox{0.45\textwidth}{
+				\begin{align}
+					E_{K_{top}}&=\frac{1}{2}m|\vec{v_{top}}|^2\\[\baselineskip]
+					\Delta h&=h_{top}-h_{bottom}\\
+					\Delta E_p&=mg\Delta h\\[\baselineskip]
+					E_{K_{bottom}}&=E_{K_{top}}+\Delta E_P\\
+					&=\frac{1}{2}m|\vec{v_{top}}|^2+mg\Delta h
+				\end{align}
+			}\\
+			\hline
 		\end{tabularx}
 	\end{table}
+	
+	Using the force meter model, take measurements of the motion to calculate the force at the bottom of the loop when the model glider moves with the minimum velocity that still allows the model of the glider to complete a full loop.
+	Compare the value of force calculated with the actual measured value and explain any differences by considering accuracy in the measurements.
+	
 	
 	\section{Banked Corner}
 	\subsection{Achieved}
