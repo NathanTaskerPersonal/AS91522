@@ -4,10 +4,11 @@
 \usepackage[left=1cm, right=1cm, top=1cm, bottom=2cm]{geometry}
 \parindent 0px % indent new lines by 0 pixels
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref, amsfonts,amssymb,amsmath,tikz,pgfplots,float,graphicx,tabularx,array}
+\usepackage{hyperref, amsfonts,amssymb,amsmath,tikz,pgfplots,float,graphicx,tabularx,array,siunitx}
 \usetikzlibrary{positioning}
 
 \def\ParagraphSpacing{30pt}
+\allowdisplaybreaks % lets aligned equations flow through multiple pages.
 
 \title{\small AS91522 - Physics 3.2\\ \huge Circular Motion of a Stunt Glider}
 \author{Nathan Tasker}
@@ -357,16 +358,7 @@
 			\vspace{\baselineskip}
 			REWORD AND PROVIDE EQUATION PROOF?
 			&
-			On the graph, we can expect this position of the loop to have a tension force exactly a quarter of the range above the minimum of the range. 
-			\parbox{0.45\textwidth}{
-				\begin{align}
-					E_{K_{top}}&=\frac{1}{2}m|\vec{v_{top}}|^2\\[\baselineskip]
-					\Delta h&=h_{top}-h_{bottom}\\
-					\Delta E_p&=mg\Delta h\\[\baselineskip]
-					E_{K_{bottom}}&=E_{K_{top}}+\Delta E_P\\
-					&=\frac{1}{2}m|\vec{v_{top}}|^2+mg\Delta h
-				\end{align}
-			}\\
+			On the graph, we can expect this position of the loop to have a tension force exactly a quarter of the range above the minimum of the range. \\
 			\hline
 		\end{tabularx}
 	\end{table}
@@ -378,8 +370,36 @@
 	The following equation represents the minimum velocity $|\vec{v}|$ required to produce adequate centripetal acceleration $|\vec{a_c}|$ for a circular path with radius $r$.
 	\begin{align}
 		|\vec{a_c}|&=\frac{|\vec{v}|^2}{r}\\
-		|\vec{v}|&=\sqrt{|\vec{a_c}|r}\\
-		&=\sqrt{(9.81)r}
+		|\vec{v_{top}}|&=\sqrt{|\vec{a_c}|r}\\
+		&=\sqrt{(9.81)\left(\frac{96.4}{100}\right)}\\
+		&= \SI{3.08}{\meter\per\second} \quad (2\, \text{d.p.})
+	\end{align}
+	The following equations solve for the "lift" force at the bottom of the modelled vertical loop with tension force.
+	\begin{align}
+		E_{K_{top}}&=\frac{1}{2}m|\vec{v_{top}}|^2\\
+		&=\frac{1}{2}\left(\frac{89.4}{1000}\right)(3.08)^2\\
+		&=\SI{0.42}{\joule} \quad (2\, \text{d.p.})\\[\baselineskip]
+		\Delta h&=h_{top}-h_{bottom}\\
+		&\approx2r\\
+		%\text{\tiny (Approximate as our hand is the pivot which can't be kept flawlessly stationary.)}\\[\baselineskip]
+		\Delta E_p&=mg\Delta h\\
+		&\approx mg2r\\[\baselineskip]
+		E_{K_{bottom}}&=E_{K_{top}}+\Delta E_P\\
+		&=\frac{1}{2}m|\vec{v_{top}}|^2+mg\Delta h\\
+		&\approx \frac{1}{2}m|\vec{v_{top}}|^2+mg2r\\
+		&\approx \frac{1}{2}\left(\frac{89.4}{1000}\right)(3.08)^2 + \left(\frac{89.4}{1000}\right)(9.81)\left(\frac{2\times96.4}{100}\right)\\
+		&\approx \SI{2.11}{\joule} \quad (2\, \text{d.p.})\\[\baselineskip]
+		|\vec{v_{bottom}}|&=\sqrt{\frac{2E_{K_{bottom}}}{m}}\\
+		&\approx \sqrt{\frac{2(2.11)}{\left(\dfrac{89.4}{1000}\right)}}\\
+		&\approx \SI{6.88}{\meter\per\second} \quad (2\, \text{d.p.})\\[\baselineskip]
+		|\vec{F_{c_{bottom}}}|&=\frac{m|\vec{v_{bottom}}|^2}{r}\\
+		&\approx\frac{\left(\dfrac{89.4}{1000}\right)(6.88)^2}{\left(\dfrac{96.4}{100}
+			\right)}\\
+		&\approx \SI{4.39}{\newton} \quad (2\, \text{d.p.})\\[\baselineskip]
+		|\vec{F_{L_{bottom}}}|&=|\vec{F_{c_{bottom}}}|-|\vec{F_g}|\\
+		&=|\vec{F_{c_{bottom}}}|-mg\\
+		&\approx(4.39)-\left(\frac{89.4}{1000}\right)(9.81)\\
+		&\approx \SI{3.51}{\newton} \quad (2\, \text{d.p.})
 	\end{align}
 	
 	
