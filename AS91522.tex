@@ -6,6 +6,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref, amsfonts,amssymb,amsmath,tikz,pgfplots,float,graphicx,tabularx,array,siunitx}
 \usetikzlibrary{positioning}
+\usetikzlibrary{decorations.markings}
 
 \def\ParagraphSpacing{30pt}
 \allowdisplaybreaks % lets aligned equations flow through multiple pages.
@@ -396,10 +397,10 @@
 		&\approx\frac{\left(\dfrac{89.4}{1000}\right)(6.88)^2}{\left(\dfrac{96.4}{100}
 			\right)}\\
 		&\approx \SI{4.39}{\newton} \quad (2\, \text{d.p.})\\[\baselineskip]
-		|\vec{F_{L_{\text{bottom}}}}|&=|\vec{F_{c_{\text{bottom}}}}|-|\vec{F_g}|\\
-		&=|\vec{F_{c_{\text{bottom}}}}|-mg\\
-		&\approx(4.39)-\left(\frac{89.4}{1000}\right)(9.81)\\
-		&\approx \SI{3.51}{\newton} \quad (2\, \text{d.p.})
+		|\vec{F_{L_{\text{bottom}}}}|&=|\vec{F_{c_{\text{bottom}}}}|+|\vec{F_g}|\\
+		&=|\vec{F_{c_{\text{bottom}}}}|+mg\\
+		&\approx(4.39)+\left(\frac{89.4}{1000}\right)(9.81)\\
+		&\approx \SI{5.27}{\newton} \quad (2\, \text{d.p.})
 	\end{align}
 	
 	
@@ -417,7 +418,58 @@
 		&\approx \SI{0.877}{\newton} \quad (3\, \text{s.f.})\\[\baselineskip]
 		|\vec{F_{L_y}}|&>|\vec{F_g}|\\
 		&\gtrsim(0.877)
+		%more info on difference here?
 	\end{align}
+	
+	
+	\begin{table}[H]
+		\renewcommand{\arraystretch}{1.5}
+		\begin{tabularx}{\textwidth}{XX}
+			Components:
+			\vspace{\baselineskip}
+			&
+			Vector Addition:\\
+			\begin{tikzpicture}[
+				% Define the decoration for double congruence marks
+				decoration={
+					markings,
+					mark=at position 0.5 with {
+						\draw[thick] (-2pt, -4pt) -- (-2pt, 4pt);
+						\draw[thick] (2pt, -4pt) -- (2pt, 4pt);
+					}
+				}
+				]
+				\pgfmathsetmacro{\GravityLength}{3}
+				\pgfmathsetmacro{\GliderPointRadius}{0.1}
+				\draw [->] (0,0) -- ++(0, -\GravityLength) node[below] {$\vec{F_g}$};
+				\draw[draw=none, postaction={decorate}] (0,0) -- ++(0, -\GravityLength);
+				\draw [->] (0,0) -- ++(\GravityLength, \GravityLength) node[above right] {$\vec{F_L}$};
+				\draw [->, gray, dashed] (0,0) -- ++(\GravityLength, 0) node[right] {$\vec{F_{L_x}}$};
+				\draw [->, gray, dashed] (0,0) -- ++(0, \GravityLength) node[above] {$\vec{F_{L_y}}$};
+				\draw[draw=none, gray, postaction={decorate}] (0,0) -- ++(0, \GravityLength);
+				\filldraw[black] (0,0) circle (\GliderPointRadius);
+			\end{tikzpicture}
+			&
+			\begin{tikzpicture}[
+				% Define the decoration for double congruence marks
+				decoration={
+					markings,
+					mark=at position 0.5 with {
+						\draw[thick] (-2pt, -4pt) -- (-2pt, 4pt);
+						\draw[thick] (2pt, -4pt) -- (2pt, 4pt);
+					}
+				}
+				]
+				\pgfmathsetmacro{\GravityLength}{3}
+				\pgfmathsetmacro{\GliderPointRadius}{0.1}
+				\draw [->, gray] (\GravityLength, \GravityLength) -- ++(0, -\GravityLength) node[right, yshift=5pt] {$\vec{F_g}$};
+				\draw [->] (0,0) -- ++(\GravityLength, \GravityLength) node[above right] {$\vec{F_L}$};
+				\draw [->, red, thick] (0,0) -- ++(\GravityLength, 0) node[below] {$\vec{\sum F}=\vec{F_c}$};
+				\filldraw[black] (0,0) circle (\GliderPointRadius);
+			\end{tikzpicture}\\
+		\end{tabularx}
+	\end{table}
+	
 	\subsection{Excellence}
 	\section{Additional Info}
 	\subsection{Comprehensive Version History}
