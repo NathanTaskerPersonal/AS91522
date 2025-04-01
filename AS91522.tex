@@ -370,34 +370,34 @@
 	The following equation represents the minimum velocity $|\vec{v}|$ required to produce adequate centripetal acceleration $|\vec{a_c}|$ for a circular path with radius $r$.
 	\begin{align}
 		|\vec{a_c}|&=\frac{|\vec{v}|^2}{r}\\
-		|\vec{v_{top}}|&=\sqrt{|\vec{a_c}|r}\\
+		|\vec{v_{\text{top}}}|&=\sqrt{|\vec{a_c}|r}\\
 		&=\sqrt{(9.81)\left(\frac{96.4}{100}\right)}\\
 		&= \SI{3.08}{\meter\per\second} \quad (2\, \text{d.p.})
 	\end{align}
 	The following equations solve for the "lift" force at the bottom of the modelled vertical loop with tension force.
 	\begin{align}
-		E_{K_{top}}&=\frac{1}{2}m|\vec{v_{top}}|^2\\
+		E_{K_{\text{top}}}&=\frac{1}{2}m|\vec{v_{\text{top}}}|^2\\
 		&=\frac{1}{2}\left(\frac{89.4}{1000}\right)(3.08)^2\\
 		&=\SI{0.42}{\joule} \quad (2\, \text{d.p.})\\[\baselineskip]
-		\Delta h&=h_{top}-h_{bottom}\\
+		\Delta h&=h_{\text{top}}-h_{\text{bottom}}\\
 		&\approx2r\\
 		%\text{\tiny (Approximate as our hand is the pivot which can't be kept flawlessly stationary.)}\\[\baselineskip]
 		\Delta E_p&=mg\Delta h\\
 		&\approx mg2r\\[\baselineskip]
-		E_{K_{bottom}}&=E_{K_{top}}+\Delta E_P\\
-		&=\frac{1}{2}m|\vec{v_{top}}|^2+mg\Delta h\\
-		&\approx \frac{1}{2}m|\vec{v_{top}}|^2+mg2r\\
+		E_{K_{\text{bottom}}}&=E_{K_{\text{top}}}+\Delta E_p\\
+		&=\frac{1}{2}m|\vec{v_{\text{top}}}|^2+mg\Delta h\\
+		&\approx \frac{1}{2}m|\vec{v_{\text{top}}}|^2+mg2r\\
 		&\approx \frac{1}{2}\left(\frac{89.4}{1000}\right)(3.08)^2 + \left(\frac{89.4}{1000}\right)(9.81)\left(\frac{2\times96.4}{100}\right)\\
 		&\approx \SI{2.11}{\joule} \quad (2\, \text{d.p.})\\[\baselineskip]
-		|\vec{v_{bottom}}|&=\sqrt{\frac{2E_{K_{bottom}}}{m}}\\
+		|\vec{v_{\text{bottom}}}|&=\sqrt{\frac{2E_{K_{\text{bottom}}}}{m}}\\
 		&\approx \sqrt{\frac{2(2.11)}{\left(\dfrac{89.4}{1000}\right)}}\\
 		&\approx \SI{6.88}{\meter\per\second} \quad (2\, \text{d.p.})\\[\baselineskip]
-		|\vec{F_{c_{bottom}}}|&=\frac{m|\vec{v_{bottom}}|^2}{r}\\
+		|\vec{F_{c_{\text{bottom}}}}|&=\frac{m|\vec{v_{\text{bottom}}}|^2}{r}\\
 		&\approx\frac{\left(\dfrac{89.4}{1000}\right)(6.88)^2}{\left(\dfrac{96.4}{100}
 			\right)}\\
 		&\approx \SI{4.39}{\newton} \quad (2\, \text{d.p.})\\[\baselineskip]
-		|\vec{F_{L_{bottom}}}|&=|\vec{F_{c_{bottom}}}|-|\vec{F_g}|\\
-		&=|\vec{F_{c_{bottom}}}|-mg\\
+		|\vec{F_{L_{\text{bottom}}}}|&=|\vec{F_{c_{\text{bottom}}}}|-|\vec{F_g}|\\
+		&=|\vec{F_{c_{\text{bottom}}}}|-mg\\
 		&\approx(4.39)-\left(\frac{89.4}{1000}\right)(9.81)\\
 		&\approx \SI{3.51}{\newton} \quad (2\, \text{d.p.})
 	\end{align}
@@ -405,7 +405,19 @@
 	
 	\section{Banked Corner}
 	\subsection{Achieved}
+	When the glider travels around the banked corner, 3 forces are acting on the glider. Lift, air resistance, and gravity. Lift can be broken down into its vertical and horizontal components. Without any vertical acceleration nor velocity, the vertical component of the lift force must be of equal magnitude and opposite direction to the force of gravity acting downwards. This leaves the horizontal component of the lift force to be equal (both in magnitude and direction) to the net, centripetal force (when ignoring the force of air resistance). The magnitude of this centripetal force theoretically always remains constant in order to complete a perfectly circular path.
 	\subsection{Merit}
+	The lift force must be greater than the gravity force as the vertical component of lift must always be equal in magnitude to gravity to prevent vertical motion.\\
+	Insert Graph Here\\
+	As the graph shows, the measured tension force (emulating lift) is consistently [this value] for reasons previously explained.
+	The weight of the glider is
+	\begin{align}
+		|\vec{F_g}|&=mg\\
+		&\approx \left(\frac{89.4}{1000}\right)(9.81)\\
+		&\approx \SI{0.877}{\newton} \quad (3\, \text{s.f.})\\[\baselineskip]
+		|\vec{F_{L_y}}|&>|\vec{F_g}|\\
+		&\gtrsim(0.877)
+	\end{align}
 	\subsection{Excellence}
 	\section{Additional Info}
 	\subsection{Comprehensive Version History}
