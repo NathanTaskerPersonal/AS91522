@@ -5,7 +5,7 @@
 \parindent 0px % indent new lines by 0 pixels
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref, amsfonts,amssymb,amsmath,tikz,pgfplots,float,graphicx,tabularx,array,siunitx}
-\usetikzlibrary{positioning}
+\usetikzlibrary{angles,quotes,positioning}
 \usetikzlibrary{decorations.markings}
 
 \def\ParagraphSpacing{30pt}
@@ -421,14 +421,36 @@
 		%more info on difference here?
 	\end{align}
 	
+	\begin{center}
+		\begin{tikzpicture}
+			\pgfmathsetmacro{\GravityLength}{1}
+			\pgfmathsetmacro{\GliderPointRadius}{0.1}
+			\pgfmathsetmacro{\CircularPathRadius}{5}
+			\coordinate (GliderPoint) at (-\CircularPathRadius,0);
+			\coordinate (PivotPoint) at (0,\CircularPathRadius);
+			\coordinate (CenterPoint) at (0,0);
+			\draw [gray, dotted] (-\CircularPathRadius,0) -- (PivotPoint);
+			\draw [gray, dotted] (\CircularPathRadius,0) -- (PivotPoint);
+			\draw [lightgray, dotted] (CenterPoint) -- (PivotPoint);
+			\draw [lightgray, dotted] (GliderPoint) -- (\CircularPathRadius,0);
+			\draw[gray, dashed] (CenterPoint) ellipse (5 and 1);
+			\draw [->] (-\CircularPathRadius,0) -- ++(0, -\GravityLength) node[below] {$\vec{F_g}$};
+			\draw[draw=none, postaction={decorate}] (0,0) -- ++(0, -\GravityLength);
+			\draw [->] (-\CircularPathRadius,0) -- ++(\GravityLength, \GravityLength) node[above right] {$\vec{F_L}$};
+			\draw[draw=none, gray, postaction={decorate}] (0,0) -- ++(0, \GravityLength);
+			\filldraw[black] (GliderPoint) circle (\GliderPointRadius);
+			\pic [draw, "$\theta$", angle radius=1cm, angle eccentricity=1.5] {angle = GliderPoint--PivotPoint--CenterPoint};
+		\end{tikzpicture}
+	\end{center}
 	
 	\begin{table}[H]
 		\renewcommand{\arraystretch}{1.5}
-		\begin{tabularx}{\textwidth}{XX}
+		\begin{tabularx}{\textwidth}{X|X}
 			Components:
-			\vspace{\baselineskip}
 			&
 			Vector Addition:\\
+			\hline
+			\vspace{\baselineskip}
 			\begin{tikzpicture}[
 				% Define the decoration for double congruence marks
 				decoration={
@@ -450,6 +472,7 @@
 				\filldraw[black] (0,0) circle (\GliderPointRadius);
 			\end{tikzpicture}
 			&
+			\vspace{\baselineskip}
 			\begin{tikzpicture}[
 				% Define the decoration for double congruence marks
 				decoration={
@@ -467,6 +490,29 @@
 				\draw [->, red, thick] (0,0) -- ++(\GravityLength, 0) node[below] {$\vec{\sum F}=\vec{F_c}$};
 				\filldraw[black] (0,0) circle (\GliderPointRadius);
 			\end{tikzpicture}\\
+			\vspace{\baselineskip}
+			\begin{tikzpicture}[
+				% Define the decoration for double congruence marks
+				decoration={
+					markings,
+					mark=at position 0.5 with {
+						\draw[thick] (-2pt, -4pt) -- (-2pt, 4pt);
+						\draw[thick] (2pt, -4pt) -- (2pt, 4pt);
+					}
+				}
+				]
+				\pgfmathsetmacro{\GravityLength}{3}
+				\pgfmathsetmacro{\GliderPointRadius}{0.1}
+				\draw [->, lightgray] (0,0) -- ++(0, -\GravityLength) node[below] {$\vec{F_g}$};
+				\draw[draw=none, lightgray, postaction={decorate}] (0,0) -- ++(0, -\GravityLength);
+				\draw [->, lightgray] (0,0) -- ++(\GravityLength, \GravityLength) node[above right] {$\vec{F_L}$};
+				\draw [->, red, thick] (0,0) -- ++(\GravityLength, 0) node[right] {$\vec{F_{L_x}}=\vec{\sum F}=\vec{F_c}$};
+				\draw [->, lightgray, dashed] (0,0) -- ++(0, \GravityLength) node[above] {$\vec{F_{L_y}}$};
+				\draw[draw=none, lightgray, postaction={decorate}] (0,0) -- ++(0, \GravityLength);
+				\filldraw[black] (0,0) circle (\GliderPointRadius);
+			\end{tikzpicture}
+			&
+			\\
 		\end{tabularx}
 	\end{table}
 	
