@@ -4,9 +4,16 @@
 \usepackage[left=1cm, right=1cm, top=1cm, bottom=2cm]{geometry}
 \parindent 0px % indent new lines by 0 pixels
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref, amsfonts,amssymb,amsmath,tikz,pgfplots,float,graphicx,tabularx,array,siunitx}
+\usepackage{hyperref, amsfonts,amssymb,amsmath,tikz,pgfplots,float,graphicx,tabularx,array,siunitx,cleveref}
 \usetikzlibrary{angles,quotes,positioning}
 \usetikzlibrary{decorations.markings}
+
+%\hypersetup{
+%	colorlinks=true,    % Use colored text instead of boxes
+%	linkcolor=blue,     % Color for internal links (TOC, \cref)
+%	citecolor=blue,    % Color for citations (optional)
+%	urlcolor=blue   % Color for URLs (optional)
+%}
 
 \def\ParagraphSpacing{30pt}
 \allowdisplaybreaks % lets aligned equations flow through multiple pages.
@@ -64,12 +71,14 @@
 	\end{align}
 	During the loop the loop, as the glider ascends, its kinetic energy ($E_K$) is converted into gravitational potential energy ($E_p$). This decreases its velocity as it is proportional to kinetic energy, which decreased when converted to gravitational potential energy. \\
 	As the glider descends, its gravitational potential energy ($E_p$) is converted back into kinetic energy ($E_K$).This increases its velocity as it is proportional to kinetic energy, which increased when the gravitational potential energy was converted back into it.\\[\ParagraphSpacing]
-	A glider's ability to successfully perform a vertical loop relies on its ability to provide an adequate lift force, increasing both net and centripital force.
+	A glider's ability to successfully perform a vertical loop relies on its ability to provide an adequate lift force, increasing both net and centripetal force.
 	\begin{align}
-		|\vec{F_L}|&=\frac{1}{2}p|\vec{v}|^2AC_L\\
-		\therefore |\vec{F_L}|&\propto |\vec{v}|^2
+		|\vec{F_L}|&=\frac{1}{2}p|\vec{v}|^2AC_L \label{eq:lift}\\
+		\therefore |\vec{F_L}|&\propto |\vec{v}|^2 \label{eq:lift-prop-vel} \\[\baselineskip]
+		|\vec{F_{L_\text{top}}}|&=|\vec{F_c}|-|\vec{F_g}|\\
+		|\vec{F_{L_\text{bottom}}}|&=|\vec{F_c}|+|\vec{F_g}|
 	\end{align}
-	Equation (5) shows that velocity is a major factor in the magnitude of the lift force. Without adequate velocity, inadequate lift force is provided for the vertical loop to be successful. As kinetic energy is converted to gravitational potential energy during ascent, if the velocity drops below what is required for the circular path radius its motion will instead imitate that of a projectile.\\
+	\cref{eq:lift-prop-vel} shows that velocity is a major factor in the magnitude of the lift force. Without adequate velocity, inadequate lift force is provided for the vertical loop to be successful. As kinetic energy is converted to gravitational potential energy during ascent, if the velocity drops below what is required for the circular path radius its motion will instead imitate that of a projectile.\\
 	Other factors proportional to velocity include surface area contacting air ($A$), and the coefficient of lift ($C_L$), determined by shape and angle of attack).\\
 	Fluid density ($p$) is constant.\\[\ParagraphSpacing]
 	During motion, 3 forces are acting on the stunt glider:
@@ -111,7 +120,7 @@
 		\includegraphics[width=0.8\textwidth]{Images/Dip in vertical circle.png}
 		\caption{The dip section of vertical circular motion with a quadratic curve fit}
 	\end{figure}
-	Quadratic curve fit is applied to closely fit the lift force data in the section of the dip motion from 18.50s to 18.88s. It helps exclude random variation / noise in the data and provide consistent smoothness and symmetry. The line displayed in the center marks 18.68s, which is when the emulated glider reaches its lowest vertical height (i.e. lowest point in the dip), also aligning with the local peak in the emulated lift force at 6.29N. The reason for the greatest lift force being required at the bottom of the loop the loop is due to its direction oppositely opposing gravity, requiring the greatest magnitude to provide sufficient centripetal force for the vertical loop's radius. The velocity is also greatest here as it has the greatest $E_K:E_P$ ratio (i.e. $\frac{E_K}{E_P}$ is at its greatest in the time series) (as previously explained) which is a major factor in causing that required greatest lift force (as previously explained in Eq2,3,5 $\because E_K\propto|\vec{v}|^2\propto |\vec{F_L}|$).
+	Quadratic curve fit is applied to closely fit the lift force data in the section of the dip motion from 18.50s to 18.88s. It helps exclude random variation / noise in the data and provide consistent smoothness and symmetry. The line displayed in the center marks 18.68s, which is when the emulated glider reaches its lowest vertical height (i.e. lowest point in the dip), also aligning with the local peak in the emulated lift force at 6.29N. The reason for the greatest lift force being required at the bottom of the loop the loop is due to its direction oppositely opposing gravity, requiring the greatest magnitude to provide sufficient centripetal force for the vertical loop's radius. The velocity is also greatest here as it has the greatest $E_K:E_P$ ratio (i.e. $\frac{E_K}{E_P}$ is at its greatest in the time series) (as previously explained) which is a major factor in causing that required greatest lift force (as explained in previous equations) $\because E_K\propto|\vec{v}|^2\propto |\vec{F_L}|$).
 	\subsection{Excellence}
 	\begin{center}
 		\begin{tikzpicture}
@@ -367,15 +376,15 @@
 	%Using the force meter model, take measurements of the motion to calculate the force at the bottom of the loop when the model glider moves with the minimum velocity that still allows the model of the glider to complete a full loop.
 	%Compare the value of force calculated with the actual measured value and explain any differences by considering accuracy in the measurements.
 	
-	I'll assume that at the top of the loop, the downwards lift force is zero. In reality, this would never happen. Unless its velocity was perfectly zero (completely stationary), equation 4 and 5 prove there must also be a lift force. Depending on the velocity (ranging from minimum to excessive), that lift force could range from negligible to decently large.\\
-	The following equation represents the minimum velocity $|\vec{v}|$ required to produce adequate centripetal acceleration $|\vec{a_c}|$ for a circular path with radius $r$.
+	I'll assume that at the top of the loop, the downwards lift force is zero. In reality, this would never happen. Unless its velocity was perfectly zero (completely stationary), \cref{eq:lift} and \cref{eq:lift-prop-vel} prove there must also be a lift force. Depending on the velocity (ranging from minimum to excessive), that lift force could range from negligible to decently large.\\
+	\cref{eq:min-vel} represents the minimum velocity $|\vec{v}|$ required to produce adequate centripetal acceleration $|\vec{a_c}|$ for a circular path with radius $r$.
 	\begin{align}
 		|\vec{a_c}|&=\frac{|\vec{v}|^2}{r}\\
-		|\vec{v_{\text{top}}}|&=\sqrt{|\vec{a_c}|r}\\
+		|\vec{v_{\text{top}}}|&=\sqrt{|\vec{a_c}|r} \label{eq:min-vel}\\
 		&=\sqrt{(9.81)\left(\frac{96.4}{100}\right)}\\
 		&= \SI{3.08}{\meter\per\second} \quad (2\, \text{d.p.})
 	\end{align}
-	The following equations solve for the "lift" force at the bottom of the modelled vertical loop with tension force.
+	The following equations solve for the "lift" (emulated by tension) force at the bottom of the modeled vertical loop with tension force.
 	\begin{align}
 		E_{K_{\text{top}}}&=\frac{1}{2}m|\vec{v_{\text{top}}}|^2\\
 		&=\frac{1}{2}\left(\frac{89.4}{1000}\right)(3.08)^2\\
@@ -397,31 +406,25 @@
 		&\approx\frac{\left(\dfrac{89.4}{1000}\right)(6.88)^2}{\left(\dfrac{96.4}{100}
 			\right)}\\
 		&\approx \SI{4.39}{\newton} \quad (2\, \text{d.p.})\\[\baselineskip]
+		|\vec{F_{L_\text{bottom}}}|-|\vec{F_g}|&=|\vec{F_{c_\text{bottom}}}|\\
 		|\vec{F_{L_{\text{bottom}}}}|&=|\vec{F_{c_{\text{bottom}}}}|+|\vec{F_g}|\\
-		&=|\vec{F_{c_{\text{bottom}}}}|+mg\\
+		&=|\vec{F_{c_{\text{bottom}}}}|+m|\vec{g}|\\
 		&\approx(4.39)+\left(\frac{89.4}{1000}\right)(9.81)\\
 		&\approx \SI{5.27}{\newton} \quad (2\, \text{d.p.})
 	\end{align}
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{Images/Tension at Bottom}
+		\caption{Tension force in string during vertical loop}
+	\end{figure}
+	In the data, we can see that at the bottom of the vertical loop (i.e. at the peaks of the graph) it has $F_{T_\text{bottom}}\approx \SI{5.12}{\newton} \quad (2\, \text{d.p.})$. This is marginally less than the calculated value, which is expected as air resistance is not taken into account in the calculations. In a real world scenario, the air resistance causes a minor proportion of the kinetic energy to convert into other forms, such as thermal energy (heat) and sound energy. That reduction in kinetic energy causes less velocity magnitude, which would cause less lift force at the bottom due to eqXXX or in the model, less tension force as XGUYWGFUYGWA
 	
 	\section{Banked Corner}
-	\subsection{Achieved}
-	When the glider travels around the banked corner, 3 forces are acting on the glider. Lift, air resistance, and gravity. Lift can be broken down into its vertical and horizontal components. Without any vertical acceleration nor velocity, the vertical component of the lift force must be of equal magnitude and opposite direction to the force of gravity acting downwards. This leaves the horizontal component of the lift force to be equal (both in magnitude and direction) to the net, centripetal force (when ignoring the force of air resistance). The magnitude of this centripetal force theoretically always remains constant in order to complete a perfectly circular path.
-	\subsection{Merit}
-	The lift force must be greater than the gravity force as the vertical component of lift must always be equal in magnitude to gravity to prevent vertical motion.\\
-	Insert Graph Here\\
-	As the graph shows, the measured tension force (emulating lift) is consistently [this value] for reasons previously explained.
-	The weight of the glider is
-	\begin{align}
-		|\vec{F_g}|&=mg\\
-		&\approx \left(\frac{89.4}{1000}\right)(9.81)\\
-		&\approx \SI{0.877}{\newton} \quad (3\, \text{s.f.})\\[\baselineskip]
-		|\vec{F_{L_y}}|&>|\vec{F_g}|\\
-		&\gtrsim(0.877)
-		%more info on difference here?
-	\end{align}
-	
-	\begin{center}
+	\subsection{Diagrams}
+	Note: Air resistance and velocity have been omitted from the following diagrams. Velocity is always tangent to the circular path. Air resistance is always opposite in direction to velocity. Their magnitudes will correlate in that $|\vec{F_R}| \propto |\vec{v}|^2$.\\
+	\vspace{\baselineskip}
+		\begin{center}
 		\begin{tikzpicture}
 			\pgfmathsetmacro{\GravityLength}{1}
 			\pgfmathsetmacro{\GliderPointRadius}{0.1}
@@ -470,6 +473,13 @@
 				\draw [->, gray, dashed] (0,0) -- ++(0, \GravityLength) node[above] {$\vec{F_{L_y}}$};
 				\draw[draw=none, gray, postaction={decorate}] (0,0) -- ++(0, \GravityLength);
 				\filldraw[black] (0,0) circle (\GliderPointRadius);
+				\coordinate (GliderPoint) at (0,0);
+				\coordinate (LiftPoint) at (\GravityLength,\GravityLength);
+				\coordinate (LiftXPoint) at (\GravityLength,0);
+				\coordinate (LiftYPoint) at (0,\GravityLength);
+				\pic [draw, "$\theta$", angle radius=0.8cm, angle eccentricity=1.5] {angle = GliderPoint--LiftPoint--LiftXPoint};
+				\draw [lightgray, dotted] (LiftPoint)--(LiftXPoint);
+				\draw [lightgray, dotted] (LiftPoint)--(LiftYPoint);
 			\end{tikzpicture}
 			&
 			\vspace{\baselineskip}
@@ -489,8 +499,11 @@
 				\draw [->] (0,0) -- ++(\GravityLength, \GravityLength) node[above right] {$\vec{F_L}$};
 				\draw [->, red, thick] (0,0) -- ++(\GravityLength, 0) node[below] {$\vec{\sum F}=\vec{F_c}$};
 				\filldraw[black] (0,0) circle (\GliderPointRadius);
+				\coordinate (GliderPoint) at (0,0);
+				\coordinate (LiftPoint) at (\GravityLength,\GravityLength);
+				\coordinate (LiftXPoint) at (\GravityLength,0);
+				\pic [draw, "$\theta$", angle radius=0.8cm, angle eccentricity=1.5] {angle = GliderPoint--LiftPoint--LiftXPoint};
 			\end{tikzpicture}\\
-			\vspace{\baselineskip}
 			\begin{tikzpicture}[
 				% Define the decoration for double congruence marks
 				decoration={
@@ -510,11 +523,56 @@
 				\draw [->, lightgray, dashed] (0,0) -- ++(0, \GravityLength) node[above] {$\vec{F_{L_y}}$};
 				\draw[draw=none, lightgray, postaction={decorate}] (0,0) -- ++(0, \GravityLength);
 				\filldraw[black] (0,0) circle (\GliderPointRadius);
+				\coordinate (GliderPoint) at (0,0);
+				\coordinate (LiftPoint) at (\GravityLength,\GravityLength);
+				\coordinate (LiftXPoint) at (\GravityLength,0);
+				\coordinate (LiftYPoint) at (0,\GravityLength);
+				\pic [draw, "$\theta$", angle radius=0.8cm, angle eccentricity=1.5, lightgray] {angle = GliderPoint--LiftPoint--LiftXPoint};
+				\draw [lightgray, dotted] (LiftPoint)--(LiftXPoint);
+				\draw [lightgray, dotted] (LiftPoint)--(LiftYPoint);
 			\end{tikzpicture}
+			\parbox{0.45\textwidth}{
+				\begin{align}
+					\vec{F_c}&=\vec{F_{L_x}}\\
+					|\vec{F_c}|&=|\vec{F_{L_x}}|\\
+					&=|\vec{F_L}| \sin \theta\\
+					&=|\vec{F_g}| \sin \theta
+				\end{align}
+			}
 			&
-			\\
+			\parbox{0.45\textwidth}{
+				\begin{align}
+					\vec{F_c}&=\vec{\sum F}\\
+					&=\vec{F_L}+\vec{F_g}\\
+					&\text{(Adding vectors, not magnitudes!)}\\[\baselineskip]
+					|\vec{F_c}|&=\sqrt{\left|\vec{F_L}\right|^2-\left|\vec{F_g}\right|^2}
+				\end{align}
+			}\\
+			This method shows that $|\vec{F_g}|=|\vec{F_{L_y}}|$, meaning there is no net vertical force. We know this must be true, as during travel around banked corners we don't observe any vertical motion. This relates to Newton's first law (inertia) in the vertical axis.
+			Because $\vec{F_g}$ and $\vec{F_{L_y}}$ effectively cancel each other out (or in a real world scenario come extremely close to canceling each other out), that leaves only $\vec{F_{L_x}}$ to contribute towards the net force (also called centripetal force in this case as it points toward center of circular path).
+			&
+			Another method is to simply add the vectors of the two forces, $\vec{F_g}$ and $\vec{F_L}$ (not to be confused with adding their magnitudes). This also provides its net (or centripetal) force.\\
 		\end{tabularx}
 	\end{table}
+	
+	\subsection{Achieved}
+	
+	When the glider travels around the banked corner, 3 forces are acting on the glider. Lift, air resistance, and gravity. Lift can be broken down into its vertical and horizontal components. Without any vertical acceleration nor velocity, the vertical component of the lift force must be of equal magnitude and opposite direction to the force of gravity acting downwards. This leaves the horizontal component of the lift force to be equal (both in magnitude and direction) to the net, centripetal force (when ignoring the force of air resistance). The magnitude of this centripetal force theoretically always remains constant in order to complete a perfectly circular path.
+	\subsection{Merit}
+	The lift force must be greater than the gravity force as the vertical component of lift must always be equal in magnitude to gravity to prevent vertical motion.\\
+	Insert Graph Here\\
+	As the graph shows, the measured tension force (emulating lift) is consistently [this value] for reasons previously explained.
+	The weight of the glider is
+	\begin{align}
+		|\vec{F_g}|&=mg\\
+		&\approx \left(\frac{89.4}{1000}\right)(9.81)\\
+		&\approx \SI{0.877}{\newton} \quad (3\, \text{s.f.})\\[\baselineskip]
+		|\vec{F_{L_y}}|&=|\vec{F_g}|\\
+		&\approx \SI{0.877}{\newton} \quad (3\, \text{s.f.})\\[\baselineskip]
+		|\vec{F_L}|&>|\vec{F_{L_y}}|\\
+		&\gtrsim(0.877)
+		%more info on difference here?
+	\end{align}
 	
 	\subsection{Excellence}
 	\section{Additional Info}
