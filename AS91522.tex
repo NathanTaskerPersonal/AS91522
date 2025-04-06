@@ -76,10 +76,12 @@
 		|\vec{F_L}|&=\frac{1}{2}p|\vec{v}|^2AC_L \label{eq:lift}\\
 		\therefore |\vec{F_L}|&\propto |\vec{v}|^2 \label{eq:lift-prop-vel} \\[\baselineskip]
 		|\vec{F_{L_\text{top}}}|&=|\vec{F_c}|-|\vec{F_g}|\\
-		|\vec{F_{L_\text{bottom}}}|&=|\vec{F_c}|+|\vec{F_g}|
+		&=\frac{m|\vec{v}|^2}{r}-m|\vec{g}|\label{eq:lift-top} \\[\baselineskip]
+		|\vec{F_{L_\text{bottom}}}|&=|\vec{F_c}|+|\vec{F_g}|\\
+		&=\frac{m|\vec{v}|^2}{r}+m|\vec{g}| \label{eq:lift-bottom}
 	\end{align}
-	\cref{eq:lift-prop-vel} shows that velocity is a major factor in the magnitude of the lift force. Without adequate velocity, inadequate lift force is provided for the vertical loop to be successful. As kinetic energy is converted to gravitational potential energy during ascent, if the velocity drops below what is required for the circular path radius its motion will instead imitate that of a projectile.\\
-	Other factors proportional to velocity include surface area contacting air ($A$), and the coefficient of lift ($C_L$), determined by shape and angle of attack).\\
+	\cref{eq:lift-prop-vel}, \cref{eq:lift-top}, and \cref{eq:lift-bottom} show that velocity is a major factor in the magnitude of the lift force. Without adequate velocity, inadequate lift force and consequently inadequate centripetal acceleration is provided, causing an unsuccessful vertical loop. As kinetic energy is converted to gravitational potential energy during ascent, if the velocity drops below what is required for the circular path radius its motion will instead imitate that of a projectile. (Side note: This oversimplification is more true for the tension force model, less so for an actual glider. The lift force won't simply disappear even if it fails a vertical circular path, as indicated by \cref{eq:lift}. Because of this, in reality, it won't perfectly meet the criteria of what is defined as projectile motion)\\
+	Other factors proportional to the lift force ($\vec{F_L}$) include surface area contacting air ($A$), and the coefficient of lift ($C_L$), determined by shape and angle of attack).\\
 	Fluid density ($p$) is constant.\\[\ParagraphSpacing]
 	During motion, 3 forces are acting on the stunt glider:
 	\begin{enumerate}
@@ -570,11 +572,79 @@
 		|\vec{F_{L_y}}|&=|\vec{F_g}|\\
 		&\approx \SI{0.877}{\newton} \quad (3\, \text{s.f.})\\[\baselineskip]
 		|\vec{F_L}|&>|\vec{F_{L_y}}|\\
-		&\gtrsim(0.877)
+		&\gtrsim\SI{0.877}{\newton} \quad (3\, \text{s.f.})
 		%more info on difference here?
 	\end{align}
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{Images/Conical Pendulum}
+		\caption{Tension force during conical pendulum motion (multiple cycles)}
+	\end{figure}
+	The average measured tension force during the conical pendulum motion (emulating the lift force during banked corners) has a value of 1.106N, which is $\gtrsim\SI{0.877}{\newton} \quad (3\, \text{s.f.})$ as calculated. Over the time period measured, the tension force varied by a relatively small amount (unavoidable due to the need to flick/shift fingers to maintain motion in the model).
+	
+	
+	
 	\subsection{Excellence}
+	The force measured in our data is tension. We can calculate it in multiple ways.\\[\baselineskip]
+	$r_c$ refers to the radius from the center of the circular path (it ends up canceling out so isn't necessary).\\
+	$r_p$ refers to the radius from the pivot of the conical pendulum (i.e. the string length, including additional distance to the center of mass).\\
+	$t$ refers to the amount of time it takes for the conical pendulum to complete one loop.
+	
+	\begin{table}[H]
+		\begin{tabularx}{\textwidth}{c|c}
+			Method 1: Force Components Triangle
+			&
+			Method 2: Vector Addition Triangle (Pythagoras)\\
+			\hline
+			\parbox{0.4\textwidth}{
+			\begin{align}
+				|\vec{F_L}|\sin \theta &= |\vec{F_c}|\\
+				|\vec{F_L}|&=\frac{|\vec{F_c}|}{\sin \theta}\\
+				&=\frac{\left(\dfrac{m|\vec{v}|^2}{r_c}\right)}{\sin \left(\sin^{-1}\left(\dfrac{r_c}{r_p}\right)\right)}\\
+				&=\frac{m|\vec{v}|^2}{r_c\left(\dfrac{r_c}{r_p}\right)}\\
+				&=\frac{m\left(\dfrac{d}{t}\right)^2}{\left(\dfrac{r_c^2}{r_p}\right)}\\
+				&=\frac{mr_p\left(\dfrac{2\pi r_c}{t}\right)^2}{r_c^2}\\
+				&=\frac{\left(\dfrac{4\pi^2mr_c^2r_p}{t^2}\right)}{r_c^2}\\
+				&=\frac{4\pi^2mr_c^2r_p}{r_c^2t^2}\\
+				&=\frac{4\pi^2mr_p}{t^2}\\
+				&\approx\frac{4\pi^2\left(\dfrac{89.4}{1000}\right)\left(\dfrac{60}{100}\right)}{(1.53)^2}\\
+				&\approx\SI{0.905}{\newton} \quad (3\, \text{s.f.})
+			\end{align}
+			}
+			&
+			\parbox{0.55\textwidth}{
+			\begin{align}
+				%|\vec{F_c}|&=\sqrt{\left|\vec{F_L}\right|^2-\left|\vec{F_g}\right|^2}\\
+				|\vec{F_c}|^2&=|\vec{F_L}|^2-|\vec{F_g}|^2\\
+				|\vec{F_L}|^2&=|\vec{F_c}|^2+|\vec{F_g}|^2\\
+				|\vec{F_L}|&=\sqrt{\left|\vec{F_c}\right|^2+\left|\vec{F_g}\right|^2}\\
+				|\vec{F_L}|&=\sqrt{\left(\dfrac{m|\vec{v}|^2}{r_c}\right)^2+(m|\vec{g}|)^2}\\
+				&=\sqrt{\left(\frac{m\left(\frac{d}{t}\right)^2}{r_c}\right)^2+m^2|\vec{g}|^2}\\
+				&=\sqrt{\left(\frac{m\left(\frac{2\pi r_c}{t}\right)^2}{r_c}\right)^2+m^2|\vec{g}|^2}\\
+				&=\sqrt{\left(\dfrac{\left(\dfrac{4\pi^2 mr_c^2}{t^2}\right)}{r_c}\right)^2+m^2|\vec{g}|^2}\\
+				&=\sqrt{\left(\dfrac{4\pi^2 mr_c}{t^2}\right)^2+m^2|\vec{g}|^2}\\
+				&\approx\sqrt{\left(\dfrac{4\pi^2 \left(\frac{89.4}{1000}\right)\left(\frac{35}{100}\right)}{(1.53)^2}\right)^2+\left(\frac{89.4}{1000}\right)^2(9.81)^2}\\
+				&\approx\SI{0.893}{\newton} \quad (3\, \text{s.f.})
+			\end{align}
+			}\\
+		\end{tabularx}
+	\end{table}
+	\begin{center}
+		Method 3: Simple Method - Force Components Triangle
+	\end{center}
+	\begin{align}
+		|\vec{F_L}|&=\frac{F_{L_y}}{\cos \theta}\\
+		&=\frac{F_g}{\cos \theta}\\
+		&=\frac{m|\vec{g}|}{\cos \left(\sin^{-1}\left(\dfrac{r_c}{r_p}\right)\right)}\\
+		&\approx\frac{\left(\dfrac{89.4}{1000}\right)(9.81)}{\cos \left(\sin^{-1}\left(\dfrac{\left(\dfrac{35}{100}\right)}{\left(\dfrac{60}{100}\right)}\right)\right)}\\
+		&\approx\SI{1.08}{\newton} \quad (3\, \text{s.f.})
+	\end{align}
+	Each of these methods uses a different combination of 3 measured variables that will introduce varying amounts of human error into the final calculation. Method 3 has a calculated value closest to the correct, measured tension force reflecting that the measured variables used in its equation were measured more accurately and with less human error. All 3 methods are valid, and if data collection (testing conditions and measuring) was flawless they would all produce the same result.\\[\baselineskip]
+	The reasoning stated for merit is correct as all calculated values are $\gtrsim\SI{0.877}{\newton} \quad (3\, \text{s.f.})$. The calculated values are slightly different to the values measured by the force meter. This is because due to human error in measuring.\\[\ParagraphSpacing]
+	Because gravity and the vertical component of lift cancel out, the passenger's weight should feel more or less normal.\\
+	During the ride around the banked corner, the seat will be at an angle. During flight, ``downwards'' is perceived as the direction towards the seat from the passenger (no longer the direction towards Earth's center). Gravity will no longer be pushing the passenger ``downwards'' from their point of view, but rather at an angle. It may seem intuitive to think the passengers will shift/slide in the direction the seat's normal force is pushing them but that's unlikely to actually happen. Despite the passenger feeling an angled normal force from their seat pushing them toward the center of the circular path the glider is traveling, they're unlikely to slide in that direction. This is because of inertia. Passengers rely on force from their surroundings to maintain their centripetal force because they naturally want to resist changes to their motion (newtons first law). When the glider turns, passengers bodies will have a natural tendency to ``want'' to maintain their straight motion due to inertia. This resistance to turning creates a sensation that feels like a force is pushing you outwards (away from the center of the circular path), which is often refereed to as the centrifugal force. This force is fake and does not exist. But relative to their surroundings the sensation of being pushed outwards feels like a force and - despite the normal force pushing them inwards toward the center of circular path - will cause them to feel pushed outwards overall.
+	
 	\section{Additional Info}
 	\subsection{Comprehensive Version History}
 	Access to all prior versions of this document during process of creation is publicly available at:\\
@@ -583,6 +653,6 @@
 	Access to all graphical analysis files are publicly available at:\\
 	\href{https://middletonschoolnz-my.sharepoint.com/:f:/g/personal/taskern_middleton_school_nz/EhEmw21C2L9Fn9BYUy2ccwMBn6xCUF93vtfvtT_5_rkxbA?e=Tp02lP}{middletonschoolnz-my.sharepoint.com/...}
 	\subsection{\LaTeX}
-	This document has been entirely written in \LaTeX; a markup language for mathematical equations and diagrams. I'm more than happy to provide plain text for the entire document for convenience in AI detection.
+	This document has been entirely written in \LaTeX; a markup language for mathematical equations and diagrams. I'm more than happy to provide plain text for the entire document for convenience in plagiarism or AI detection.
 	\subsection{Bibliography}
 \end{document}
