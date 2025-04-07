@@ -37,8 +37,8 @@
 	\vspace{\ParagraphSpacing}
 	The force of gravity is always constant in both magnitude and direction (vertically downwards) regardless of the glider's velocity or position in the loop (top, bottom, and anywhere else). This is because $|\vec{F_g}|=mg$ where mass ($m$) and the acceleration of gravity ($g$) are constants.\\[\ParagraphSpacing]
 	Conversely, the force of lift varies in both direction and magnitude as the glider performs the loop the loop.\\
-	Lift's magnitude ($|\vec{F_L}|$) is greatest at the bottom, $\because |\vec{F_L}|=\frac{1}{2}p|\vec{v}|^2AC_L$, $\therefore |\vec{F_L}|\propto v^2$. Because velocity is greatest at bottom, lift force is as well. To maintain circular motion the centripetal force ($|\vec{F_c}|=|\vec{F_L}|-|\vec{F_g}|$) towards the center of the circular path must have a magnitude value great enough to provide necessary centripetal acceleration for the circular path radius, meaning the lift force upwards must at least be greater than the gravity force downwards ($|\vec{F_L}|>|\vec{F_g}|$ in order for $|\vec{F_c}|>0$).\\
-	Lift's magnitude ($|\vec{F_L}|$) is least at the top, because the direction of gravity force is toward the center of the circular path. This means ($|\vec{F_c}|=|\vec{F_L}|+|\vec{F_g}|$).\\
+	Lift's magnitude ($|\vec{F_L}|$) is greatest at the bottom, $\because |\vec{F_L}|=\frac{1}{2}p|\vec{v}|^2AC_L$, $\therefore |\vec{F_L}|\propto v^2$. Because velocity is greatest at bottom, lift force is as well. To maintain circular motion the centripetal force ($|\vec{F_{c_\text{bottom}}}|=|\vec{F_L}|-|\vec{F_g}|$) towards the center of the circular path must have a magnitude value great enough to provide necessary centripetal acceleration for the circular path radius, meaning the lift force upwards must at least be greater than the gravity force downwards ($|\vec{F_L}|>|\vec{F_g}|$ in order for $|\vec{F_c}|>0$).\\
+	Lift's magnitude ($|\vec{F_L}|$) is least at the top, because the direction of gravity force is toward the center of the circular path. This means ($|\vec{F_{c_\text{top}}}|=|\vec{F_L}|+|\vec{F_g}|$).\\
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
@@ -279,7 +279,7 @@
 			On the graph from our force meter model, this position has the greatest tension force, which is used to emulate the lift force of the glider. As previously explained, this is what we should expect as kinetic energy, velocity, and consequently the lift force of glider should be greatest, which is crucial for it to counter gravity and provide sufficient magnitude.
 			
 			\vspace{\baselineskip}
-			Although the tension force doesn't perfectly act as a lift force in that its force isn't proportional to velocity in the same way it instead almost instantaneously provides adequate force to decelerate outwards velocity to zero and if it remains on the circumference of the path with force applied against it, tension provides greater than or equal to to counter it.
+			Although the tension force doesn't perfectly act as a lift force in that its force isn't proportional to velocity in the same way it instead almost instantaneously provides adequate force to decelerate outwards velocity to zero and if it remains on the circumference of the path with force applied against it, tension provides greater than or equal to counter it.
 			&
 			On the graph from our force meter mode, this position has the least tension force which is used to emualte the lift force of the glider. As explained, this is what we should expect as kinetic energy, velocity and consequently the lift force of the glider should be least - instead the force of gravity typically contributes the majority towards the centripetal force, with the downwards lift force contributing a minority to its magnitude.\\
 			\hline
@@ -359,22 +359,26 @@
 			&
 			Lift and only a component of gravity ($\vec{F_{g_{C2}}}$) add to provide the centripetal force. That component of gravity contributes in decreasing the magnitude of centripetal force as it opposes in direction.\\
 			\hline
-			On the graph, We can expect this position of the loop to have a tension force exactly halfway in between the peak and trough. The difference in velocity between top and bottom will determine how much the tension force varies throughout the loop.
-			
-			\vspace{\baselineskip}
-			If proportionally significant, we can expect proportionally significant change in tension/lift, else if very little proportional change we can expect very little proportional difference to the lift (and centripetal since they're the same, solely provided by lift) force.
-			
-			\vspace{\baselineskip}
-			By this point it has gained half the gravitation potential energy that it will in total, and hence lost exactly half of the kinetic energy it will lose in total. So velocity is exactly half that change and consequently lift force is exactly half.
-			
-			\vspace{\baselineskip}
-			REWORD AND PROVIDE EQUATION PROOF?
+			On the graph, We can expect this position of the loop to have a tension force roughly halfway in between the peak and trough. %The difference in velocity between top and bottom will determine how much the tension force varies throughout the loop.
+			%
+			%\vspace{\baselineskip}
+			%If proportionally significant, we can expect proportionally significant change in tension/lift, else if very little proportional change we can expect very little proportional difference to the lift (and centripetal since they're the same, solely provided by lift) force.
+			%
+			%\vspace{\baselineskip}
+			%By this point it has gained half the gravitation potential energy that it will in total, and hence lost exactly half of the kinetic energy it will lose in total. So velocity is exactly half that change and consequently lift force is roughly a quarter.
+			%REWORD AND PROVIDE EQUATION PROOF?
 			&
-			On the graph, we can expect this position of the loop to have a tension force exactly a quarter of the range above the minimum of the range. \\
+			At this point, $h\approx\dfrac{r}{\sqrt{2}}$ above min height.\\
+			%On the graph, we can expect this position of the loop to have a tension force $\approx\dfrac{num}{den}$ of the range above the minimum of the range. \\
 			\hline
 		\end{tabularx}
 	\end{table}
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{Images/Loop the loop graph with notes}
+		\caption{Tension force in string during vertical loop}
+	\end{figure}
 	%Using the force meter model, take measurements of the motion to calculate the force at the bottom of the loop when the model glider moves with the minimum velocity that still allows the model of the glider to complete a full loop.
 	%Compare the value of force calculated with the actual measured value and explain any differences by considering accuracy in the measurements.
 	
@@ -384,7 +388,7 @@
 		|\vec{a_c}|&=\frac{|\vec{v}|^2}{r}\\
 		|\vec{v_{\text{top}}}|&=\sqrt{|\vec{a_c}|r} \label{eq:min-vel}\\
 		&=\sqrt{(9.81)\left(\frac{96.4}{100}\right)}\\
-		&= \SI{3.08}{\meter\per\second} \quad (2\, \text{d.p.})
+		&=\SI{3.08}{\meter\per\second} \quad (2\, \text{d.p.})
 	\end{align}
 	The following equations solve for the "lift" (emulated by tension) force at the bottom of the modeled vertical loop with tension force.
 	\begin{align}
@@ -420,8 +424,62 @@
 		\includegraphics[width=0.8\textwidth]{Images/Tension at Bottom}
 		\caption{Tension force in string during vertical loop}
 	\end{figure}
-	In the data, we can see that at the bottom of the vertical loop (i.e. at the peaks of the graph) it has $F_{T_\text{bottom}}\approx \SI{5.12}{\newton} \quad (2\, \text{d.p.})$. This is marginally less than the calculated value, which is expected as air resistance is not taken into account in the calculations. In a real world scenario, the air resistance causes a minor proportion of the kinetic energy to convert into other forms, such as thermal energy (heat) and sound energy. That reduction in kinetic energy causes less velocity magnitude, which would cause less lift force at the bottom due to eqXXX or in the model, less tension force as XGUYWGFUYGWA
+	In the data, we can see that at the bottom of the vertical loop (i.e. at the peaks of the graph) it has $F_{T_\text{bottom}}\approx \SI{5.12}{\newton} \quad (2\, \text{d.p.})$. This is marginally less than the calculated value, which is expected as air resistance is not taken into account in the calculations. In a real world scenario, the air resistance causes a minor proportion of the kinetic energy to convert into other forms, such as thermal energy (heat) and sound energy. That reduction in kinetic energy causes less velocity magnitude, which would cause less lift force at the bottom due to \cref{eq:lift-prop-vel} or in the model, less tension force due to \cref{eq:lift-bottom}.\\
+	The calculation also makes use of variables that aren't measured flawlessly accurately/precisely, which introduces some human error into the final calculated value.\\[\ParagraphSpacing]
 	
+	Calculations for seat normal force at the top of the loop:
+	\begin{align}
+		|\vec{F_{N_\text{top}}}|&=|\vec{F_{c_p}}|-|\vec{F_{g_p}}|\\
+		&=\frac{m_p|\vec{v}|^2}{r}-m_p|\vec{g}|\\
+		&=m_p\left(\frac{|\vec{v}|^2}{r}-|\vec{g}|\right) \label{eq:FNTop}
+	\end{align}
+	Whereas this would be bottom of loop:
+	\begin{align}
+		|\vec{F_{N_\text{bottom}}}|&=|\vec{F_{c_p}}|+|\vec{F_{g_p}}|\\
+		&=\frac{m_p|\vec{v}|^2}{r}+m_p|\vec{g}|\\
+		&=m_p\left(\frac{|\vec{v}|^2}{r}+|\vec{g}|\right) \label{eq:FNBottom}\\
+		\because|\vec{v}|>0,\,&\therefore |\vec{F_{N_\text{bottom}}}|>|\vec{F_{g_p}}| \label{eq:N>g}
+	\end{align}
+	
+	\Large Sensation of the Ride:\\ \normalsize
+	The sensation of a sitting passenger on the glider during the vertical loop will feel ``heavier'' and ``lighter'' (potentially even feel ``weightless'') at different points of the vertical loop. In reality, the passengers weight will always remain constant, but that sensation given is due to the varying normal force of their seat pushing against them. At the top of the loop, due to gravity and lift forces aligning direction, they will feel ``lighter'' than usual (unless velocity is so fast that the seat normal force grows excessively large (\cref{eq:FNTop})). If lift force reduced to zero at the top of the vertical loop (in reality impossible with any positive magnitude of velocity due to \cref{eq:lift-prop-vel}) then the passenger will feel weightless as no normal force from the seat will be pushing towards them. At the bottom of the vertical loop, the passenger is guaranteed to feel ``heavier'' than usual because the support force of the seat is greater than the magnitude of their force of gravity (\cref{eq:N>g}).\\
+	If the radius of the vertical loop is small enough and/or the velocity at the bottom of the loop is great enough, it can cause the seat's normal force to be multiple times as great as the persons weight, making them feel multiple times ``heavier'' than they usually are.\\
+	A G-Force (gravitational force) is a measure of acceleration that is felt as a multiple of gravity's acceleration, useful for describing the seat's normal force relative to the persons weight.\\
+	Because blood is a fluid, as the seats normal force pushes the person with a force magnitude multiple times their own weight (i.e. g-force $>1$) the inertia of the blood will pull it down through the persons body from their head to towards their lower body and legs. If the g-force is adequately high, the heart will fail to pump blood hard enough against this unnaturally excessive acceleration to supply the brain and eyes with oxygen-rich blood. At roughly 3-4g blood flow to the retina in the eyes is reduced and vision typically begins to gray out. At 5-6g or more, the brain begins to lose sufficient oxygen due to the lack of blood leading to a loss of consciousness (passing out).\\[\ParagraphSpacing]
+	\Large Maximum speed over an arch without feeling weightless:\\ \normalsize
+	\begin{center}
+		Criteria for passengers not to feel weightless:\\
+		Gravity must exceed the required centripetal force.
+		\begin{align}
+		|\vec{F_c}| &< |\vec{F_g}|\\
+		\frac{m|\vec{v}|^2}{r} &< m|\vec{g}|\\
+		\frac{|\vec{v}|^2}{r} &< |\vec{g}|\\
+		|\vec{v}|^2&<r|\vec{g}|\\
+		|\vec{v}|&<\sqrt{r|\vec{g}|}\\
+		\therefore |\vec{v_\text{max}}|&=\sqrt{r|\vec{g}|}
+		\end{align}
+		Seat normal force equation:
+		\begin{align}
+			|\vec{F_N}|&=|\vec{F_g}|-|\vec{F_c}|\\
+			&=m|\vec{g}|-\frac{m|\vec{v}|^2}{r}
+		\end{align}
+		Equation only works where $0<|\vec{v}|\leq\sqrt{r|\vec{g}|}$\\
+		If $|\vec{v}|\geq\sqrt{r|\vec{g}|}$, then $|\vec{F_N}|=\SI{0}{\newton}$\\[\baselineskip]
+		Test - Normal force of seat if $|\vec{v}|=\sqrt{r|\vec{g}|}$
+		\begin{align}
+			|\vec{F_N}|&=m|\vec{g}|-\frac{m|\vec{v}|^2}{r}\\
+			&=m|\vec{g}|-\frac{m\left(\sqrt{r|\vec{g}|}\right)^2}{r}\\
+			&=m|\vec{g}|-\frac{mr|\vec{g}|}{r}\\
+			&=m|\vec{g}|-m|\vec{g}|\\
+			&=\SI{0}{\newton}
+		\end{align}
+		Which is expected, verifying the answer.
+	\end{center}
+	\vspace{\ParagraphSpacing}
+	\Large Parabola Dip and Arch:\\ \normalsize
+	If the motion of the glider followed a parabola shaped path it would imitate projectile motion, where the only force acting on an object is gravity. After the transition between the arch and then dipping, the glider and its passengers would free fall at the same rate and there would be no normal force sensation at all.\\
+	Keep in mind if humans were outside of the plane during free fall, they would not fall at the same rate as the plane. This is because air resistance is greater relative to weight for an independent human, whereas air resistance is smaller relative to weight for a plane. However this issue is not encountered when the human is within the plane because it effectively shields the human from that air resistance, and the air within the plane falls along with it so it doesn't create noticeable air resistance, hence passengers still feeling weightless despite air around them.\\
+	Comparing this to a vertical loop - Sensation of weightlessness may only occur at the peak of the vertical circle (provided velocity was minimum) and definitely can't be maintained for extended periods of time like the parabolic path offers, making it far less optimal of a choice for training astronauts for true weightlessness in space.
 	\section{Banked Corner}
 	\subsection{Diagrams}
 	Note: Air resistance and velocity have been omitted from the following diagrams. Velocity is always tangent to the circular path. Air resistance is always opposite in direction to velocity. Their magnitudes will correlate in that $|\vec{F_R}| \propto |\vec{v}|^2$.\\
@@ -562,9 +620,8 @@
 	When the glider travels around the banked corner, 3 forces are acting on the glider. Lift, air resistance, and gravity. Lift can be broken down into its vertical and horizontal components. Without any vertical acceleration nor velocity, the vertical component of the lift force must be of equal magnitude and opposite direction to the force of gravity acting downwards. This leaves the horizontal component of the lift force to be equal (both in magnitude and direction) to the net, centripetal force (when ignoring the force of air resistance). The magnitude of this centripetal force theoretically always remains constant in order to complete a perfectly circular path.
 	\subsection{Merit}
 	The lift force must be greater than the gravity force as the vertical component of lift must always be equal in magnitude to gravity to prevent vertical motion.\\
-	Insert Graph Here\\
-	As the graph shows, the measured tension force (emulating lift) is consistently [this value] for reasons previously explained.
-	The weight of the glider is
+	As the graph shows, the measured tension force (emulating lift) is roughly 1.106N.\\% for reasons previously explained.
+	The weight of the glider is:
 	\begin{align}
 		|\vec{F_g}|&=mg\\
 		&\approx \left(\frac{89.4}{1000}\right)(9.81)\\
@@ -627,7 +684,7 @@
 				&\approx\sqrt{\left(\dfrac{4\pi^2 \left(\frac{89.4}{1000}\right)\left(\frac{35}{100}\right)}{(1.53)^2}\right)^2+\left(\frac{89.4}{1000}\right)^2(9.81)^2}\\
 				&\approx\SI{0.893}{\newton} \quad (3\, \text{s.f.})
 			\end{align}
-			}\\
+			}\\ \hline
 		\end{tabularx}
 	\end{table}
 	\begin{center}
@@ -654,5 +711,4 @@
 	\href{https://middletonschoolnz-my.sharepoint.com/:f:/g/personal/taskern_middleton_school_nz/EhEmw21C2L9Fn9BYUy2ccwMBn6xCUF93vtfvtT_5_rkxbA?e=Tp02lP}{middletonschoolnz-my.sharepoint.com/...}
 	\subsection{\LaTeX}
 	This document has been entirely written in \LaTeX; a markup language for mathematical equations and diagrams. I'm more than happy to provide plain text for the entire document for convenience in plagiarism or AI detection.
-	\subsection{Bibliography}
 \end{document}
